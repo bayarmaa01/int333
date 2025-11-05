@@ -1,0 +1,202 @@
+<svg viewBox="0 0 1400 1800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .header-box { fill: #2C3E50; stroke: #1A252F; stroke-width: 3; }
+      .header-text { fill: white; font-family: Arial, sans-serif; font-size: 22px; font-weight: bold; text-anchor: middle; }
+      .layer-box { fill: #34495E; stroke: #2C3E50; stroke-width: 2; }
+      .layer-text { fill: white; font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; }
+      .component-box { fill: #3498DB; stroke: #2980B9; stroke-width: 2; }
+      .component-title { fill: white; font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; text-anchor: middle; }
+      .component-detail { fill: #2C3E50; font-family: Arial, sans-serif; font-size: 10px; }
+      .config-box { fill: #5DADE2; stroke: #3498DB; stroke-width: 1.5; }
+      .config-text { fill: #1A252F; font-family: monospace; font-size: 9px; }
+      .arrow { stroke: #E74C3C; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+      .arrow-label { fill: #E74C3C; font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; }
+      .info-box { fill: #95A5A6; stroke: #7F8C8D; stroke-width: 1.5; }
+      .info-text { fill: #2C3E50; font-family: Arial, sans-serif; font-size: 10px; }
+      .alert-box { fill: #E74C3C; stroke: #C0392B; stroke-width: 1.5; }
+      .alert-text { fill: white; font-family: Arial, sans-serif; font-size: 10px; }
+      .user-box { fill: #27AE60; stroke: #229954; stroke-width: 2; }
+      .user-text { fill: white; font-family: Arial, sans-serif; font-size: 11px; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#E74C3C" />
+    </marker>
+  </defs>
+  
+  <!-- Main Header -->
+  <rect x="20" y="20" width="1360" height="60" class="header-box" rx="8"/>
+  <text x="700" y="60" class="header-text">MONITORING ARCHITECTURE</text>
+  
+  <!-- Layer 1: Data Collection -->
+  <rect x="50" y="100" width="1300" height="30" class="layer-box" rx="5"/>
+  <text x="70" y="122" class="layer-text">DATA COLLECTION LAYER</text>
+  
+  <!-- Node Exporter -->
+  <rect x="80" y="150" width="360" height="220" class="component-box" rx="5"/>
+  <text x="260" y="175" class="component-title">Node Exporter</text>
+  <rect x="100" y="190" width="320" height="160" class="config-box" rx="3"/>
+  <text x="120" y="210" class="component-detail" font-weight="bold">System Metrics:</text>
+  <text x="120" y="230" class="component-detail">• CPU usage & load</text>
+  <text x="120" y="245" class="component-detail">• Memory utilization</text>
+  <text x="120" y="260" class="component-detail">• Disk I/O & usage</text>
+  <text x="120" y="275" class="component-detail">• Network statistics</text>
+  <text x="120" y="290" class="component-detail">• File system metrics</text>
+  <text x="120" y="315" class="info-text" font-weight="bold">Exposed Port: 9100</text>
+  <text x="120" y="330" class="info-text">Scrape Interval: 15s</text>
+  
+  <!-- cAdvisor -->
+  <rect x="470" y="150" width="360" height="220" class="component-box" rx="5"/>
+  <text x="650" y="175" class="component-title">cAdvisor</text>
+  <rect x="490" y="190" width="320" height="160" class="config-box" rx="3"/>
+  <text x="510" y="210" class="component-detail" font-weight="bold">Container Metrics:</text>
+  <text x="510" y="230" class="component-detail">• Container CPU/Memory</text>
+  <text x="510" y="245" class="component-detail">• Network throughput</text>
+  <text x="510" y="260" class="component-detail">• Disk usage per container</text>
+  <text x="510" y="275" class="component-detail">• Container lifecycle</text>
+  <text x="510" y="290" class="component-detail">• Resource limits</text>
+  <text x="510" y="315" class="info-text" font-weight="bold">Exposed Port: 8080</text>
+  <text x="510" y="330" class="info-text">Scrape Interval: 15s</text>
+  
+  <!-- Application Metrics -->
+  <rect x="860" y="150" width="360" height="220" class="component-box" rx="5"/>
+  <text x="1040" y="175" class="component-title">Application Metrics</text>
+  <rect x="880" y="190" width="320" height="160" class="config-box" rx="3"/>
+  <text x="900" y="210" class="component-detail" font-weight="bold">App-Specific Metrics:</text>
+  <text x="900" y="230" class="component-detail">• Health API status</text>
+  <text x="900" y="245" class="component-detail">• Response time (ms)</text>
+  <text x="900" y="260" class="component-detail">• Request rate (req/s)</text>
+  <text x="900" y="275" class="component-detail">• Error rate</text>
+  <text x="900" y="290" class="component-detail">• Active sessions</text>
+  <text x="900" y="315" class="info-text" font-weight="bold">Exposed Port: 8080</text>
+  <text x="900" y="330" class="info-text">Scrape Interval: 15s</text>
+  
+  <!-- Arrows from collectors to Prometheus -->
+  <line x1="260" y1="370" x2="260" y2="430" class="arrow"/>
+  <line x1="650" y1="370" x2="650" y2="430" class="arrow"/>
+  <line x1="1040" y1="370" x2="1040" y2="430" class="arrow"/>
+  <line x1="260" y1="430" x2="700" y2="470" class="arrow"/>
+  <line x1="1040" y1="430" x2="700" y2="470" class="arrow"/>
+  
+  <!-- Layer 2: Prometheus -->
+  <rect x="50" y="480" width="1300" height="30" class="layer-box" rx="5"/>
+  <text x="70" y="502" class="layer-text">METRICS STORAGE & PROCESSING LAYER</text>
+  
+  <!-- Prometheus Container -->
+  <rect x="80" y="530" width="1240" height="480" class="component-box" rx="5"/>
+  <text x="700" y="560" class="component-title" font-size="16px">PROMETHEUS</text>
+  
+  <!-- Scrape Configuration -->
+  <rect x="110" y="580" width="560" height="200" class="config-box" rx="4"/>
+  <text x="130" y="605" class="component-detail" font-weight="bold">Scrape Configuration:</text>
+  <text x="130" y="625" class="config-text">scrape_interval: 15s</text>
+  <text x="130" y="640" class="config-text">evaluation_interval: 15s</text>
+  <text x="130" y="665" class="config-text">scrape_configs:</text>
+  <text x="150" y="680" class="config-text">- job: 'node-exporter'</text>
+  <text x="170" y="695" class="config-text">targets: ['node-exporter:9100']</text>
+  <text x="150" y="715" class="config-text">- job: 'cadvisor'</text>
+  <text x="170" y="730" class="config-text">targets: ['cadvisor:8080']</text>
+  <text x="150" y="750" class="config-text">- job: 'learning-platform'</text>
+  <text x="170" y="765" class="config-text">targets: ['app:8080']</text>
+  
+  <!-- TSDB -->
+  <rect x="690" y="580" width="560" height="120" class="config-box" rx="4"/>
+  <text x="710" y="605" class="component-detail" font-weight="bold">Time Series Database (TSDB):</text>
+  <text x="710" y="630" class="component-detail">• Compressed storage format</text>
+  <text x="710" y="645" class="component-detail">• 7-day retention period</text>
+  <text x="710" y="660" class="component-detail">• Fast query engine (PromQL)</text>
+  <text x="710" y="675" class="component-detail">• Automatic data deduplication</text>
+  <text x="710" y="690" class="component-detail">• Volume: prometheus-data</text>
+  
+  <!-- Alert Manager -->
+  <rect x="690" y="720" width="560" height="120" class="alert-box" rx="4"/>
+  <text x="710" y="745" class="alert-text" font-weight="bold">Alert Manager:</text>
+  <text x="710" y="765" class="alert-text">• CPU usage > 80% for 5 minutes</text>
+  <text x="710" y="780" class="alert-text">• Memory usage > 85%</text>
+  <text x="710" y="795" class="alert-text">• Disk space < 20%</text>
+  <text x="710" y="810" class="alert-text">• Service health check failed</text>
+  <text x="710" y="825" class="alert-text">• Container restart detected</text>
+  
+  <!-- Prometheus Info -->
+  <rect x="110" y="800" width="560" height="180" class="info-box" rx="4"/>
+  <text x="130" y="825" class="info-text" font-weight="bold">Features:</text>
+  <text x="130" y="845" class="info-text">• Multi-dimensional data model</text>
+  <text x="130" y="860" class="info-text">• Powerful query language (PromQL)</text>
+  <text x="130" y="875" class="info-text">• Pull-based metrics collection</text>
+  <text x="130" y="890" class="info-text">• Service discovery support</text>
+  <text x="130" y="905" class="info-text">• Alerting and notification</text>
+  <text x="130" y="925" class="info-text" font-weight="bold">Exposed Port: 9090</text>
+  <text x="130" y="945" class="info-text" font-weight="bold">HTTP API: /api/v1/query</text>
+  <text x="130" y="965" class="info-text" font-weight="bold">Web UI: http://prometheus:9090</text>
+  
+  <!-- Arrow to Grafana -->
+  <line x1="700" y1="1010" x2="700" y2="1080" class="arrow"/>
+  <text x="720" y="1050" class="arrow-label">HTTP API</text>
+  <text x="720" y="1065" class="arrow-label">PromQL Queries</text>
+  
+  <!-- Layer 3: Grafana -->
+  <rect x="50" y="1090" width="1300" height="30" class="layer-box" rx="5"/>
+  <text x="70" y="1112" class="layer-text">VISUALIZATION & ALERTING LAYER</text>
+  
+  <!-- Grafana Container -->
+  <rect x="80" y="1140" width="1240" height="440" class="component-box" rx="5"/>
+  <text x="700" y="1170" class="component-title" font-size="16px">GRAFANA</text>
+  
+  <!-- Data Source Config -->
+  <rect x="110" y="1190" width="380" height="100" class="config-box" rx="4"/>
+  <text x="130" y="1215" class="component-detail" font-weight="bold">Data Source Configuration:</text>
+  <text x="130" y="1235" class="config-text">Type: Prometheus</text>
+  <text x="130" y="1250" class="config-text">URL: http://prometheus:9090</text>
+  <text x="130" y="1265" class="config-text">Access: Server (default)</text>
+  <text x="130" y="1280" class="config-text">Scrape interval: 15s</text>
+  
+  <!-- Dashboards -->
+  <rect x="520" y="1190" width="730" height="270" class="config-box" rx="4"/>
+  <text x="540" y="1215" class="component-detail" font-weight="bold">Dashboards:</text>
+  
+  <text x="540" y="1240" class="component-detail" font-weight="bold">Dashboard 1: Node Exporter Full (ID: 1860)</text>
+  <text x="560" y="1255" class="component-detail">• System CPU, Memory, Disk, Network</text>
+  <text x="560" y="1270" class="component-detail">• Multi-panel comprehensive view</text>
+  <text x="560" y="1285" class="component-detail">• 15-second auto-refresh</text>
+  
+  <text x="540" y="1310" class="component-detail" font-weight="bold">Dashboard 2: Docker Monitoring (ID: 893)</text>
+  <text x="560" y="1325" class="component-detail">• Container resource usage tracking</text>
+  <text x="560" y="1340" class="component-detail">• Container status and health</text>
+  <text x="560" y="1355" class="component-detail">• Docker daemon metrics</text>
+  
+  <text x="540" y="1380" class="component-detail" font-weight="bold">Dashboard 3: Learning Platform (Custom)</text>
+  <text x="560" y="1395" class="component-detail">• Application-specific metrics</text>
+  <text x="560" y="1410" class="component-detail">• Real-time health status</text>
+  <text x="560" y="1425" class="component-detail">• Request rates and latency</text>
+  <text x="560" y="1440" class="component-detail">• Error tracking and trends</text>
+  
+  <!-- Alerting & Auth -->
+  <rect x="110" y="1310" width="380" height="120" class="alert-box" rx="4"/>
+  <text x="130" y="1335" class="alert-text" font-weight="bold">Alerting:</text>
+  <text x="130" y="1355" class="alert-text">• Email notifications</text>
+  <text x="130" y="1370" class="alert-text">• Slack integration (optional)</text>
+  <text x="130" y="1385" class="alert-text">• Alert history and annotations</text>
+  <text x="130" y="1400" class="alert-text">• Custom alert rules</text>
+  <text x="130" y="1415" class="alert-text">• Threshold-based triggers</text>
+  
+  <rect x="110" y="1450" width="1140" height="110" class="info-box" rx="4"/>
+  <text x="130" y="1475" class="info-text" font-weight="bold">Access Information:</text>
+  <text x="130" y="1495" class="info-text">• Username: admin</text>
+  <text x="130" y="1510" class="info-text">• Password: admin123</text>
+  <text x="130" y="1525" class="info-text">• Exposed Port: 3000</text>
+  <text x="130" y="1540" class="info-text">• Web UI: http://grafana:3000</text>
+  
+  <!-- Arrow to Users -->
+  <line x1="700" y1="1580" x2="700" y2="1630" class="arrow"/>
+  
+  <!-- Layer 4: Access Layer -->
+  <rect x="50" y="1600" width="1300" height="30" class="layer-box" rx="5"/>
+  <text x="70" y="1622" class="layer-text">ACCESS LAYER</text>
+  
+  <!-- End Users -->
+  <rect x="80" y="1650" width="1240" height="120" class="user-box" rx="5"/>
+  <text x="700" y="1680" class="component-title" font-size="14px">END USERS / ADMINISTRATORS</text>
+  <text x="700" y="1710" class="user-text">• View real-time dashboards • Analyze historical trends • Investigate incidents</text>
+  <text x="700" y="1730" class="user-text">• Configure alerts • Export metrics data • Manage system health</text>
+  <text x="700" y="1755" class="user-text" font-weight="bold">Access via Web Browser (HTTPS)</text>
+</svg>

@@ -2,13 +2,20 @@ version: '3.8'
 
 services:
   app:
-    build: .
     container_name: learning-platform
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "80:8080"
     restart: unless-stopped
     networks:
       - monitoring
+    depends_on:
+      - prometheus
+      - grafana
+      - cadvisor
+      - node-exporter
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/learning-platform/"]
       interval: 30s
@@ -22,7 +29,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus-data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
@@ -37,15 +44,15 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin123
       - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
     volumes:
       - grafana-data:/var/lib/grafana
     restart: unless-stopped
-    networks:
-      - monitoring
     depends_on:
       - prometheus
+    networks:
+      - monitoring
 
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
@@ -54,9 +61,9 @@ services:
       - "8081:8080"
     volumes:
       - /:/rootfs:ro
-      - /var/run:/var/run:ro
-      - /sys:/sys:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - /var/lib/docker/:/var/lib/docker:ro
+      - /sys:/sys:ro
     restart: unless-stopped
     networks:
       - monitoring

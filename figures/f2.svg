@@ -1,0 +1,74 @@
+<svg viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define styles -->
+  <defs>
+    <style>
+      .external-entity { fill: #3498db; stroke: #2c3e50; stroke-width: 2; }
+      .system { fill: #2ecc71; stroke: #27ae60; stroke-width: 3; }
+      .text { font-family: Arial, sans-serif; font-size: 16px; fill: #2c3e50; font-weight: bold; }
+      .text-white { font-family: Arial, sans-serif; font-size: 18px; fill: #ffffff; font-weight: bold; }
+      .text-small { font-family: Arial, sans-serif; font-size: 14px; fill: #ffffff; }
+      .data-flow { stroke: #e74c3c; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+      .flow-label { font-family: Arial, sans-serif; font-size: 14px; fill: #e74c3c; font-weight: bold; }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="10" refY="3" orient="auto">
+      <polygon points="0 0, 12 3, 0 6" fill="#e74c3c" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="500" y="40" class="text" text-anchor="middle" font-size="22" fill="#2c3e50">Level 0 DFD - Context Diagram</text>
+
+  <!-- Developer (External Entity - Top) -->
+  <rect x="400" y="80" width="200" height="100" class="external-entity" rx="10"/>
+  <text x="500" y="120" class="text-white" text-anchor="middle">Developer</text>
+  <text x="500" y="145" class="text-small" text-anchor="middle">(External Entity)</text>
+
+  <!-- Data Flow: Code Changes -->
+  <path d="M 500 180 L 500 280" class="data-flow"/>
+  <rect x="440" y="210" width="120" height="30" fill="white" stroke="none"/>
+  <text x="500" y="230" class="flow-label" text-anchor="middle">Code Changes</text>
+
+  <!-- Central System (Circle) -->
+  <circle cx="500" cy="380" r="150" class="system"/>
+  <text x="500" y="350" class="text-white" text-anchor="middle" font-size="20">CI/CD Pipeline</text>
+  <text x="500" y="375" class="text-white" text-anchor="middle" font-size="20">System</text>
+  <text x="500" y="410" class="text-small" text-anchor="middle" font-size="13">(Automated Build, Test,</text>
+  <text x="500" y="430" class="text-small" text-anchor="middle" font-size="13">Deploy, Monitor, Alert)</text>
+
+  <!-- DevOps Engineer (External Entity - Bottom Left) -->
+  <rect x="100" y="600" width="200" height="100" class="external-entity" rx="10"/>
+  <text x="200" y="640" class="text-white" text-anchor="middle">DevOps</text>
+  <text x="200" y="665" class="text-white" text-anchor="middle">Engineer</text>
+  <text x="200" y="685" class="text-small" text-anchor="middle" font-size="12">(External Entity)</text>
+
+  <!-- Data Flow: Deployment Status -->
+  <path d="M 350 480 L 240 600" class="data-flow"/>
+  <rect x="250" y="515" width="120" height="30" fill="white" stroke="none"/>
+  <text x="310" y="535" class="flow-label" text-anchor="middle">Deployment</text>
+  <text x="310" y="550" class="flow-label" text-anchor="middle" font-size="12">Status</text>
+
+  <!-- System Admin (External Entity - Bottom Right) -->
+  <rect x="700" y="600" width="200" height="100" class="external-entity" rx="10"/>
+  <text x="800" y="640" class="text-white" text-anchor="middle">System</text>
+  <text x="800" y="665" class="text-white" text-anchor="middle">Admin</text>
+  <text x="800" y="685" class="text-small" text-anchor="middle" font-size="12">(External Entity)</text>
+
+  <!-- Data Flow: Monitoring Data -->
+  <path d="M 650 480 L 760 600" class="data-flow"/>
+  <rect x="670" y="515" width="110" height="30" fill="white" stroke="none"/>
+  <text x="725" y="535" class="flow-label" text-anchor="middle">Monitoring</text>
+  <text x="725" y="550" class="flow-label" text-anchor="middle" font-size="12">Data</text>
+
+  <!-- Legend -->
+  <rect x="50" y="730" width="900" height="50" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="5"/>
+  <text x="70" y="755" class="text" font-size="14">Legend:</text>
+  
+  <rect x="150" y="740" width="80" height="30" class="external-entity" rx="5"/>
+  <text x="190" y="760" class="text-small" text-anchor="middle" font-size="11" fill="#2c3e50">External Entity</text>
+  
+  <circle cx="310" cy="755" r="20" class="system"/>
+  <text x="360" y="760" class="text" font-size="11">System Process</text>
+  
+  <line x1="500" y1="755" x2="580" y2="755" class="data-flow"/>
+  <text x="620" y="760" class="text" font-size="11">Data Flow</text>
+</svg>

@@ -1,0 +1,107 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define styles -->
+  <defs>
+    <style>
+      .participant-box { fill: #4A90E2; stroke: #2E5C8A; stroke-width: 2; }
+      .participant-text { fill: white; font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; text-anchor: middle; }
+      .lifeline { stroke: #CCCCCC; stroke-width: 2; stroke-dasharray: 5,5; }
+      .arrow { stroke: #333333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .arrow-return { stroke: #666666; stroke-width: 2; fill: none; marker-end: url(#arrowhead-return); stroke-dasharray: 5,5; }
+      .message-text { fill: #333333; font-family: Arial, sans-serif; font-size: 12px; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#333333" />
+    </marker>
+    <marker id="arrowhead-return" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#666666" />
+    </marker>
+  </defs>
+  
+  <!-- Participants -->
+  <rect x="10" y="10" width="100" height="40" class="participant-box" rx="5"/>
+  <text x="60" y="35" class="participant-text">Developer</text>
+  
+  <rect x="150" y="10" width="100" height="40" class="participant-box" rx="5"/>
+  <text x="200" y="35" class="participant-text">GitHub</text>
+  
+  <rect x="290" y="10" width="100" height="40" class="participant-box" rx="5"/>
+  <text x="340" y="35" class="participant-text">Jenkins</text>
+  
+  <rect x="430" y="10" width="100" height="40" class="participant-box" rx="5"/>
+  <text x="480" y="35" class="participant-text">Maven</text>
+  
+  <rect x="570" y="10" width="100" height="40" class="participant-box" rx="5"/>
+  <text x="620" y="35" class="participant-text">Docker</text>
+  
+  <rect x="710" y="10" width="100" height="40" class="participant-box" rx="5"/>
+  <text x="760" y="35" class="participant-text">Container</text>
+  
+  <rect x="850" y="10" width="110" height="40" class="participant-box" rx="5"/>
+  <text x="905" y="35" class="participant-text">Prometheus</text>
+  
+  <rect x="1000" y="10" width="100" height="40" class="participant-box" rx="5"/>
+  <text x="1050" y="35" class="participant-text">Grafana</text>
+  
+  <!-- Lifelines -->
+  <line x1="60" y1="50" x2="60" y2="750" class="lifeline"/>
+  <line x1="200" y1="50" x2="200" y2="750" class="lifeline"/>
+  <line x1="340" y1="50" x2="340" y2="750" class="lifeline"/>
+  <line x1="480" y1="50" x2="480" y2="750" class="lifeline"/>
+  <line x1="620" y1="50" x2="620" y2="750" class="lifeline"/>
+  <line x1="760" y1="50" x2="760" y2="750" class="lifeline"/>
+  <line x1="905" y1="50" x2="905" y2="750" class="lifeline"/>
+  <line x1="1050" y1="50" x2="1050" y2="750" class="lifeline"/>
+  
+  <!-- Messages -->
+  <!-- Commit -->
+  <line x1="60" y1="100" x2="200" y2="100" class="arrow"/>
+  <text x="130" y="95" class="message-text">Commit</text>
+  
+  <!-- Webhook -->
+  <line x1="200" y1="140" x2="340" y2="140" class="arrow"/>
+  <text x="270" y="135" class="message-text">Webhook</text>
+  
+  <!-- Build -->
+  <line x1="340" y1="180" x2="480" y2="180" class="arrow"/>
+  <text x="410" y="175" class="message-text">Build</text>
+  
+  <!-- WAR return -->
+  <line x1="480" y1="220" x2="340" y2="220" class="arrow-return"/>
+  <text x="410" y="215" class="message-text">WAR</text>
+  
+  <!-- Docker Build -->
+  <line x1="340" y1="260" x2="620" y2="260" class="arrow"/>
+  <text x="480" y="255" class="message-text">Build</text>
+  
+  <!-- Image return -->
+  <line x1="620" y1="300" x2="340" y2="300" class="arrow-return"/>
+  <text x="480" y="295" class="message-text">Image</text>
+  
+  <!-- Deploy -->
+  <line x1="340" y1="340" x2="760" y2="340" class="arrow"/>
+  <text x="550" y="335" class="message-text">Deploy</text>
+  
+  <!-- Health Check -->
+  <line x1="340" y1="380" x2="760" y2="380" class="arrow"/>
+  <text x="550" y="375" class="message-text">Health</text>
+  
+  <!-- OK return -->
+  <line x1="760" y1="420" x2="340" y2="420" class="arrow-return"/>
+  <text x="550" y="415" class="message-text">OK</text>
+  
+  <!-- Scrape -->
+  <line x1="760" y1="500" x2="905" y2="500" class="arrow"/>
+  <text x="832" y="495" class="message-text">Scrape</text>
+  
+  <!-- Metrics return -->
+  <line x1="905" y1="540" x2="760" y2="540" class="arrow-return"/>
+  <text x="832" y="535" class="message-text">Metrics</text>
+  
+  <!-- Query -->
+  <line x1="905" y1="620" x2="1050" y2="620" class="arrow"/>
+  <text x="977" y="615" class="message-text">Query</text>
+  
+  <!-- Data return -->
+  <line x1="1050" y1="660" x2="905" y2="660" class="arrow-return"/>
+  <text x="977" y="655" class="message-text">Data</text>
+</svg>

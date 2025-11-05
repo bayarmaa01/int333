@@ -1,0 +1,184 @@
+<svg viewBox="0 0 1100 1600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define styles -->
+  <defs>
+    <style>
+      .process { fill: #3498db; stroke: #2c3e50; stroke-width: 2; }
+      .external-entity { fill: #e74c3c; stroke: #c0392b; stroke-width: 2; }
+      .data-store { fill: none; stroke: #2c3e50; stroke-width: 2; }
+      .text { font-family: Arial, sans-serif; font-size: 14px; fill: #ffffff; font-weight: bold; }
+      .text-dark { font-family: Arial, sans-serif; font-size: 14px; fill: #2c3e50; font-weight: bold; }
+      .text-number { font-family: Arial, sans-serif; font-size: 16px; fill: #ffffff; font-weight: bold; }
+      .arrow { stroke: #7f8c8d; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead); }
+      .arrow-side { stroke: #27ae60; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead-green); }
+      .flow-label { font-family: Arial, sans-serif; font-size: 12px; fill: #2c3e50; font-weight: bold; }
+      .store-label { font-family: Arial, sans-serif; font-size: 13px; fill: #2c3e50; font-weight: bold; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#7f8c8d" />
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#27ae60" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="550" y="35" class="text-dark" text-anchor="middle" font-size="22">Level 1 DFD - Main Processes</text>
+
+  <!-- Developer (External Entity) -->
+  <rect x="450" y="70" width="200" height="60" class="external-entity" rx="5"/>
+  <text x="550" y="107" class="text" text-anchor="middle">Developer</text>
+
+  <!-- Arrow from Developer -->
+  <path d="M 550 130 L 550 190" class="arrow"/>
+  <rect x="510" y="145" width="80" height="25" fill="white" stroke="none"/>
+  <text x="550" y="162" class="flow-label" text-anchor="middle">Code Push</text>
+
+  <!-- Process 1.0: Source Code Management -->
+  <rect x="420" y="190" width="260" height="80" class="process" rx="8"/>
+  <text x="440" y="215" class="text-number">1.0</text>
+  <text x="550" y="235" class="text" text-anchor="middle">Source Code</text>
+  <text x="550" y="255" class="text" text-anchor="middle">Management</text>
+
+  <!-- Side arrow to GitHub Repository -->
+  <path d="M 680 230 L 820 230" class="arrow-side"/>
+  <rect x="710" y="210" width="40" height="20" fill="white" stroke="none"/>
+  <text x="730" y="224" class="flow-label" text-anchor="middle" font-size="11">Code</text>
+  <rect x="820" y="205" width="200" height="50" class="data-store" rx="3"/>
+  <line x1="820" y1="215" x2="1020" y2="215" stroke="#2c3e50" stroke-width="2"/>
+  <text x="920" y="237" class="store-label" text-anchor="middle">GitHub Repository</text>
+
+  <!-- Arrow to Process 2.0 -->
+  <path d="M 550 270 L 550 320" class="arrow"/>
+  <rect x="480" y="280" width="140" height="25" fill="white" stroke="none"/>
+  <text x="550" y="297" class="flow-label" text-anchor="middle">Code + Webhook</text>
+
+  <!-- Process 2.0: Build & Test -->
+  <rect x="420" y="320" width="260" height="80" class="process" rx="8"/>
+  <text x="440" y="345" class="text-number">2.0</text>
+  <text x="550" y="365" class="text" text-anchor="middle">Build & Test</text>
+  <text x="550" y="385" class="text" text-anchor="middle">Process</text>
+
+  <!-- Side arrow to Artifact Storage -->
+  <path d="M 680 360 L 820 360" class="arrow-side"/>
+  <rect x="710" y="340" width="40" height="20" fill="white" stroke="none"/>
+  <text x="730" y="354" class="flow-label" text-anchor="middle" font-size="11">WAR</text>
+  <rect x="820" y="335" width="200" height="50" class="data-store" rx="3"/>
+  <line x1="820" y1="345" x2="1020" y2="345" stroke="#2c3e50" stroke-width="2"/>
+  <text x="920" y="367" class="store-label" text-anchor="middle">Artifact Storage</text>
+
+  <!-- Arrow to Process 3.0 -->
+  <path d="M 550 400 L 550 450" class="arrow"/>
+  <rect x="490" y="410" width="120" height="25" fill="white" stroke="none"/>
+  <text x="550" y="427" class="flow-label" text-anchor="middle">Test Results</text>
+
+  <!-- Process 3.0: Docker Image Creation -->
+  <rect x="420" y="450" width="260" height="80" class="process" rx="8"/>
+  <text x="440" y="475" class="text-number">3.0</text>
+  <text x="550" y="495" class="text" text-anchor="middle">Docker Image</text>
+  <text x="550" y="515" class="text" text-anchor="middle">Creation</text>
+
+  <!-- Side arrow to Local Registry -->
+  <path d="M 680 490 L 820 490" class="arrow-side"/>
+  <rect x="710" y="470" width="50" height="20" fill="white" stroke="none"/>
+  <text x="735" y="484" class="flow-label" text-anchor="middle" font-size="11">Image</text>
+  <rect x="820" y="465" width="200" height="50" class="data-store" rx="3"/>
+  <line x1="820" y1="475" x2="1020" y2="475" stroke="#2c3e50" stroke-width="2"/>
+  <text x="920" y="497" class="store-label" text-anchor="middle">Local Registry</text>
+
+  <!-- Arrow to Process 4.0 -->
+  <path d="M 550 530 L 550 580" class="arrow"/>
+  <rect x="480" y="540" width="140" height="25" fill="white" stroke="none"/>
+  <text x="550" y="557" class="flow-label" text-anchor="middle">Docker Image</text>
+
+  <!-- Process 4.0: Deployment Process -->
+  <rect x="420" y="580" width="260" height="80" class="process" rx="8"/>
+  <text x="440" y="605" class="text-number">4.0</text>
+  <text x="550" y="625" class="text" text-anchor="middle">Deployment</text>
+  <text x="550" y="645" class="text" text-anchor="middle">Process</text>
+
+  <!-- Side arrow to Jenkins Dashboard -->
+  <path d="M 680 620 L 820 620" class="arrow-side"/>
+  <rect x="710" y="600" width="50" height="20" fill="white" stroke="none"/>
+  <text x="735" y="614" class="flow-label" text-anchor="middle" font-size="11">Status</text>
+  <rect x="820" y="595" width="200" height="50" class="data-store" rx="3"/>
+  <line x1="820" y1="605" x2="1020" y2="605" stroke="#2c3e50" stroke-width="2"/>
+  <text x="920" y="627" class="store-label" text-anchor="middle">Jenkins Dashboard</text>
+
+  <!-- Arrow to Process 5.0 -->
+  <path d="M 550 660 L 550 710" class="arrow"/>
+  <rect x="460" y="670" width="180" height="25" fill="white" stroke="none"/>
+  <text x="550" y="687" class="flow-label" text-anchor="middle">Running Container</text>
+
+  <!-- Process 5.0: Health Check Validation -->
+  <rect x="420" y="710" width="260" height="80" class="process" rx="8"/>
+  <text x="440" y="735" class="text-number">5.0</text>
+  <text x="550" y="755" class="text" text-anchor="middle">Health Check</text>
+  <text x="550" y="775" class="text" text-anchor="middle">Validation</text>
+
+  <!-- Side arrow to Decision Point -->
+  <path d="M 680 750 L 820 750" class="arrow-side"/>
+  <rect x="700" y="730" width="70" height="20" fill="white" stroke="none"/>
+  <text x="735" y="744" class="flow-label" text-anchor="middle" font-size="11">Pass/Fail</text>
+  <polygon points="920,725 970,750 920,775 870,750" fill="#f39c12" stroke="#e67e22" stroke-width="2"/>
+  <text x="920" y="757" class="text-dark" text-anchor="middle" font-size="12">Decision</text>
+
+  <!-- Arrow to Process 6.0 -->
+  <path d="M 550 790 L 550 840" class="arrow"/>
+  <rect x="480" y="800" width="140" height="25" fill="white" stroke="none"/>
+  <text x="550" y="817" class="flow-label" text-anchor="middle">Health Data</text>
+
+  <!-- Process 6.0: Monitoring & Metrics -->
+  <rect x="420" y="840" width="260" height="80" class="process" rx="8"/>
+  <text x="440" y="865" class="text-number">6.0</text>
+  <text x="550" y="885" class="text" text-anchor="middle">Monitoring &</text>
+  <text x="550" y="905" class="text" text-anchor="middle">Metrics</text>
+
+  <!-- Side arrow to Prometheus Database -->
+  <path d="M 680 880 L 820 880" class="arrow-side"/>
+  <rect x="710" y="860" width="60" height="20" fill="white" stroke="none"/>
+  <text x="740" y="874" class="flow-label" text-anchor="middle" font-size="11">Metrics</text>
+  <rect x="820" y="855" width="200" height="50" class="data-store" rx="3"/>
+  <line x1="820" y1="865" x2="1020" y2="865" stroke="#2c3e50" stroke-width="2"/>
+  <text x="920" y="887" class="store-label" text-anchor="middle">Prometheus Database</text>
+
+  <!-- Arrow to Process 7.0 -->
+  <path d="M 550 920 L 550 970" class="arrow"/>
+  <rect x="470" y="930" width="160" height="25" fill="white" stroke="none"/>
+  <text x="550" y="947" class="flow-label" text-anchor="middle">Visualizations</text>
+
+  <!-- Process 7.0: Dashboard & Alerting -->
+  <rect x="420" y="970" width="260" height="80" class="process" rx="8"/>
+  <text x="440" y="995" class="text-number">7.0</text>
+  <text x="550" y="1015" class="text" text-anchor="middle">Dashboard &</text>
+  <text x="550" y="1035" class="text" text-anchor="middle">Alerting</text>
+
+  <!-- Arrow to System Admin -->
+  <path d="M 550 1050 L 550 1120" class="arrow"/>
+  <rect x="510" y="1070" width="80" height="25" fill="white" stroke="none"/>
+  <text x="550" y="1087" class="flow-label" text-anchor="middle">Alerts</text>
+
+  <!-- System Admin (External Entity) -->
+  <rect x="450" y="1120" width="200" height="60" class="external-entity" rx="5"/>
+  <text x="550" y="1157" class="text" text-anchor="middle">System Admin</text>
+
+  <!-- Legend -->
+  <rect x="80" y="1250" width="940" height="100" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="5"/>
+  <text x="100" y="1280" class="text-dark" font-size="16">Legend:</text>
+  
+  <rect x="180" y="1265" width="100" height="40" class="process" rx="5"/>
+  <text x="230" y="1290" class="text" text-anchor="middle" font-size="11">Process</text>
+  
+  <rect x="330" y="1265" width="100" height="40" class="external-entity" rx="5"/>
+  <text x="380" y="1285" class="text" text-anchor="middle" font-size="10">External</text>
+  <text x="380" y="1298" class="text" text-anchor="middle" font-size="10">Entity</text>
+  
+  <rect x="480" y="1275" width="100" height="20" class="data-store" rx="3"/>
+  <line x1="480" y1="1280" x2="580" y2="1280" stroke="#2c3e50" stroke-width="2"/>
+  <text x="530" y="1292" class="text-dark" text-anchor="middle" font-size="10">Data Store</text>
+  
+  <line x1="650" y1="1285" x2="730" y2="1285" stroke="#7f8c8d" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+  <text x="690" y="1305" class="text-dark" text-anchor="middle" font-size="10">Data Flow</text>
+  
+  <polygon points="850,1270 880,1285 850,1300 820,1285" fill="#f39c12" stroke="#e67e22" stroke-width="2"/>
+  <text x="850" y="1318" class="text-dark" text-anchor="middle" font-size="10">Decision</text>
+</svg>

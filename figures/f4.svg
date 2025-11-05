@@ -1,0 +1,162 @@
+<svg viewBox="0 0 1100 1400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define styles -->
+  <defs>
+    <style>
+      .process { fill: #9b59b6; stroke: #8e44ad; stroke-width: 2; }
+      .input { fill: #e74c3c; stroke: #c0392b; stroke-width: 2; }
+      .data-store { fill: none; stroke: #2c3e50; stroke-width: 2; }
+      .text { font-family: Arial, sans-serif; font-size: 14px; fill: #ffffff; font-weight: bold; }
+      .text-dark { font-family: Arial, sans-serif; font-size: 14px; fill: #2c3e50; font-weight: bold; }
+      .text-number { font-family: Arial, sans-serif; font-size: 16px; fill: #ffffff; font-weight: bold; }
+      .arrow { stroke: #7f8c8d; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead); }
+      .arrow-side { stroke: #27ae60; stroke-width: 2.5; fill: none; marker-end: url(#arrowhead-green); }
+      .flow-label { font-family: Arial, sans-serif; font-size: 12px; fill: #2c3e50; font-weight: bold; }
+      .store-label { font-family: Arial, sans-serif; font-size: 13px; fill: #2c3e50; font-weight: bold; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#7f8c8d" />
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#27ae60" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="550" y="35" class="text-dark" text-anchor="middle" font-size="22">Level 2 DFD - Deployment Subprocess (Process 4.0)</text>
+
+  <!-- Docker Image Input -->
+  <rect x="450" y="70" width="200" height="60" class="input" rx="5"/>
+  <text x="550" y="107" class="text" text-anchor="middle">Docker Image</text>
+
+  <!-- Arrow from Docker Image -->
+  <path d="M 550 130 L 550 190" class="arrow"/>
+
+  <!-- Process 4.1: Pre-Deployment Cleanup -->
+  <rect x="400" y="190" width="300" height="80" class="process" rx="8"/>
+  <text x="420" y="215" class="text-number">4.1</text>
+  <text x="550" y="235" class="text" text-anchor="middle">Pre-Deployment</text>
+  <text x="550" y="255" class="text" text-anchor="middle">Cleanup</text>
+
+  <!-- Side arrow to Jenkins Log -->
+  <path d="M 700 230 L 820 230" class="arrow-side"/>
+  <rect x="710" y="210" width="100" height="20" fill="white" stroke="none"/>
+  <text x="760" y="224" class="flow-label" text-anchor="middle" font-size="11">Container ID</text>
+  <rect x="820" y="205" width="220" height="50" class="data-store" rx="3"/>
+  <line x1="820" y1="215" x2="1040" y2="215" stroke="#2c3e50" stroke-width="2"/>
+  <text x="930" y="237" class="store-label" text-anchor="middle">Jenkins Log</text>
+
+  <!-- Arrow to Process 4.2 -->
+  <path d="M 550 270 L 550 330" class="arrow"/>
+  <rect x="450" y="285" width="200" height="25" fill="white" stroke="none"/>
+  <text x="550" y="302" class="flow-label" text-anchor="middle">Old Container Stopped</text>
+
+  <!-- Process 4.2: Container Configuration -->
+  <rect x="400" y="330" width="300" height="80" class="process" rx="8"/>
+  <text x="420" y="355" class="text-number">4.2</text>
+  <text x="550" y="375" class="text" text-anchor="middle">Container</text>
+  <text x="550" y="395" class="text" text-anchor="middle">Configuration</text>
+
+  <!-- Side arrow to Docker Compose File -->
+  <path d="M 700 370 L 820 370" class="arrow-side"/>
+  <rect x="720" y="350" width="60" height="20" fill="white" stroke="none"/>
+  <text x="750" y="364" class="flow-label" text-anchor="middle" font-size="11">Config</text>
+  <rect x="820" y="345" width="220" height="50" class="data-store" rx="3"/>
+  <line x1="820" y1="355" x2="1040" y2="355" stroke="#2c3e50" stroke-width="2"/>
+  <text x="930" y="377" class="store-label" text-anchor="middle">Docker Compose File</text>
+
+  <!-- Arrow to Process 4.3 -->
+  <path d="M 550 410 L 550 470" class="arrow"/>
+  <rect x="450" y="425" width="200" height="25" fill="white" stroke="none"/>
+  <text x="550" y="442" class="flow-label" text-anchor="middle">Configuration Ready</text>
+
+  <!-- Process 4.3: Container Startup -->
+  <rect x="400" y="470" width="300" height="80" class="process" rx="8"/>
+  <text x="420" y="495" class="text-number">4.3</text>
+  <text x="550" y="515" class="text" text-anchor="middle">Container</text>
+  <text x="550" y="535" class="text" text-anchor="middle">Startup</text>
+
+  <!-- Side arrow to Docker Runtime -->
+  <path d="M 700 510 L 820 510" class="arrow-side"/>
+  <rect x="710" y="485" width="100" height="30" fill="white" stroke="none"/>
+  <text x="760" y="499" class="flow-label" text-anchor="middle" font-size="11">Container</text>
+  <text x="760" y="512" class="flow-label" text-anchor="middle" font-size="11">Process</text>
+  <rect x="820" y="485" width="220" height="50" class="data-store" rx="3"/>
+  <line x1="820" y1="495" x2="1040" y2="495" stroke="#2c3e50" stroke-width="2"/>
+  <text x="930" y="517" class="store-label" text-anchor="middle">Docker Runtime</text>
+
+  <!-- Arrow to Process 4.4 -->
+  <path d="M 550 550 L 550 610" class="arrow"/>
+  <rect x="450" y="565" width="200" height="25" fill="white" stroke="none"/>
+  <text x="550" y="582" class="flow-label" text-anchor="middle">Container Running</text>
+
+  <!-- Process 4.4: Network Configuration -->
+  <rect x="400" y="610" width="300" height="80" class="process" rx="8"/>
+  <text x="420" y="635" class="text-number">4.4</text>
+  <text x="550" y="655" class="text" text-anchor="middle">Network</text>
+  <text x="550" y="675" class="text" text-anchor="middle">Configuration</text>
+
+  <!-- Side arrow to Host Network -->
+  <path d="M 700 650 L 820 650" class="arrow-side"/>
+  <rect x="710" y="625" width="100" height="30" fill="white" stroke="none"/>
+  <text x="760" y="639" class="flow-label" text-anchor="middle" font-size="11">Port</text>
+  <text x="760" y="652" class="flow-label" text-anchor="middle" font-size="11">Mapping</text>
+  <rect x="820" y="625" width="220" height="50" class="data-store" rx="3"/>
+  <line x1="820" y1="635" x2="1040" y2="635" stroke="#2c3e50" stroke-width="2"/>
+  <text x="930" y="657" class="store-label" text-anchor="middle">Host Network</text>
+
+  <!-- Arrow to Process 4.5 -->
+  <path d="M 550 690 L 550 750" class="arrow"/>
+  <rect x="470" y="705" width="160" height="25" fill="white" stroke="none"/>
+  <text x="550" y="722" class="flow-label" text-anchor="middle">Network Ready</text>
+
+  <!-- Process 4.5: Service Registration -->
+  <rect x="400" y="750" width="300" height="80" class="process" rx="8"/>
+  <text x="420" y="775" class="text-number">4.5</text>
+  <text x="550" y="795" class="text" text-anchor="middle">Service</text>
+  <text x="550" y="815" class="text" text-anchor="middle">Registration</text>
+
+  <!-- Side arrow to Monitoring System -->
+  <path d="M 700 790 L 820 790" class="arrow-side"/>
+  <rect x="710" y="765" width="100" height="30" fill="white" stroke="none"/>
+  <text x="760" y="779" class="flow-label" text-anchor="middle" font-size="11">Health</text>
+  <text x="760" y="792" class="flow-label" text-anchor="middle" font-size="11">Endpoint</text>
+  <rect x="820" y="765" width="220" height="50" class="data-store" rx="3"/>
+  <line x1="820" y1="775" x2="1040" y2="775" stroke="#2c3e50" stroke-width="2"/>
+  <text x="930" y="797" class="store-label" text-anchor="middle">Monitoring System</text>
+
+  <!-- Context Box -->
+  <rect x="80" y="900" width="940" height="120" fill="#e8f4f8" stroke="#3498db" stroke-width="2" rx="8"/>
+  <text x="100" y="930" class="text-dark" font-size="16">Process Context:</text>
+  <text x="120" y="955" class="text-dark" font-size="12">This Level 2 DFD breaks down Process 4.0 (Deployment Process) from the Level 1 DFD</text>
+  <text x="120" y="975" class="text-dark" font-size="12">into five sub-processes that handle the complete container deployment lifecycle,</text>
+  <text x="120" y="995" class="text-dark" font-size="12">from cleanup through configuration, startup, networking, and service registration.</text>
+
+  <!-- Legend -->
+  <rect x="80" y="1050" width="940" height="100" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="5"/>
+  <text x="100" y="1080" class="text-dark" font-size="16">Legend:</text>
+  
+  <rect x="180" y="1065" width="120" height="40" class="process" rx="5"/>
+  <text x="240" y="1090" class="text" text-anchor="middle" font-size="11">Sub-Process</text>
+  
+  <rect x="350" y="1065" width="100" height="40" class="input" rx="5"/>
+  <text x="400" y="1090" class="text" text-anchor="middle" font-size="11">Input Data</text>
+  
+  <rect x="500" y="1075" width="120" height="20" class="data-store" rx="3"/>
+  <line x1="500" y1="1080" x2="620" y2="1080" stroke="#2c3e50" stroke-width="2"/>
+  <text x="560" y="1092" class="text-dark" text-anchor="middle" font-size="10">Data Store</text>
+  
+  <line x1="680" y1="1085" x2="760" y2="1085" stroke="#7f8c8d" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+  <text x="720" y="1105" class="text-dark" text-anchor="middle" font-size="10">Process Flow</text>
+  
+  <line x1="820" y1="1085" x2="900" y2="1085" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead-green)"/>
+  <text x="860" y="1105" class="text-dark" text-anchor="middle" font-size="10">Data Output</text>
+
+  <!-- Process Summary -->
+  <rect x="80" y="1180" width="940" height="160" fill="#fff3cd" stroke="#ffc107" stroke-width="2" rx="8"/>
+  <text x="100" y="1210" class="text-dark" font-size="16">Subprocess Summary:</text>
+  <text x="120" y="1235" class="text-dark" font-size="12">• 4.1 Pre-Deployment Cleanup: Stops and removes old containers</text>
+  <text x="120" y="1255" class="text-dark" font-size="12">• 4.2 Container Configuration: Prepares environment variables and settings</text>
+  <text x="120" y="1275" class="text-dark" font-size="12">• 4.3 Container Startup: Launches new container from Docker image</text>
+  <text x="120" y="1295" class="text-dark" font-size="12">• 4.4 Network Configuration: Maps ports and configures network access</text>
+  <text x="120" y="1315" class="text-dark" font-size="12">• 4.5 Service Registration: Registers container with monitoring and health checks</text>
+</svg>
