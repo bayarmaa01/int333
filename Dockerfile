@@ -1,18 +1,23 @@
-# Use Tomcat base image
+# Use official Tomcat 9 with JDK 11 (lightweight and stable)
 FROM tomcat:9-jdk11-openjdk-slim
 
-# Remove default Tomcat applications
+# Metadata (optional but good practice)
+LABEL maintainer="bayarmaa01 <b.bayarmaa0321@gmail.com>" \
+      project="Learning Platform" \
+      version="1.0.0"
+
+# Remove default Tomcat applications to avoid clutter
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy WAR file to Tomcat webapps
-COPY target/learning-platform.war /usr/local/tomcat/webapps/learning-platform.war
+# Copy your built WAR file into Tomcat's webapps directory
+COPY target/learning-platform.war /usr/local/tomcat/webapps/ROOT.war
 
-# Expose port 8080
+# Expose Tomcat default port
 EXPOSE 8080
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s \
-  CMD curl -f http://localhost:8080/learning-platform/ || exit 1
+# Health check to ensure container is alive
+HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+  CMD curl -f http://localhost:8080/ || exit 1
 
-# Start Tomcat
+# Start Tomcat server
 CMD ["catalina.sh", "run"]
