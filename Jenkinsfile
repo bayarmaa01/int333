@@ -4,61 +4,67 @@ pipeline {
     environment {
         APP_NAME = "learning-platform"
     }
-    
+
+    options {
+        timeout(time: 30, unit: 'MINUTES')   // Entire pipeline timeout
+        ansiColor('xterm')                   // Colorized logs
+        buildDiscarder(logRotator(numToKeepStr: '5')) // Keep only last 5 builds
+    }
+
     stages {
         stage('Cleanup Workspace') {
             steps {
                 cleanWs()
             }
         }
-        
+
         stage('Checkout Code') {
             steps {
                 git branch: 'main',
                     url: 'https://github.com/bayarmaa01/INT333.git'
             }
         }
-        
+
         stage('Build with Maven') {
             steps {
-                sh 'mvn clean package'
+                timeout(time: 10, unit: 'MINUTES') {
+                    sh 'mvn clean package -DskipTests'
+                }
             }
         }
-        
+
         stage('Run Tests') {
             steps {
-                sh 'mvn test'
+                timeout(time: 5, unit: 'MINUTES') {
+                    sh 'mvn test'
+                }
             }
         }
-        
+
         stage('Build Docker Image') {
             steps {
-                script {
+                timeout(time: 10, unit: 'MINUTES') {
                     sh 'docker-compose build app'
                 }
             }
         }
-        
+
         stage('Stop Old Containers') {
             steps {
                 script {
-                    sh '''
-                        docker-compose down || true
-                    '''
+                    sh 'docker-compose down || true'
                 }
             }
         }
-        
+
         stage('Deploy with Monitoring Stack') {
             steps {
-                script {
-                    sh '''
-                        docker-compose up -d
-                    '''
+                timeout(time: 10, unit: 'MINUTES') {
+                    sh 'docker-compose up -d'
                 }
             }
         }
-        
+
         stage('Health Check') {
             steps {
                 script {
@@ -78,14 +84,13 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Verify Monitoring Stack') {
             steps {
                 script {
                     sh '''
                         echo "🔍 Checking monitoring services..."
                         docker-compose ps
-                        
                         echo "\n📊 Prometheus: http://$(curl -s ifconfig.me):9090"
                         echo "📈 Grafana: http://$(curl -s ifconfig.me):3000"
                         echo "🐳 cAdvisor: http://$(curl -s ifconfig.me):8081"
@@ -93,16 +98,14 @@ pipeline {
                 }
             }
         }
-        
+
         stage('Cleanup Old Images') {
             steps {
-                script {
-                    sh 'docker image prune -f'
-                }
+                sh 'docker image prune -f || true'
             }
         }
     }
-    
+
     post {
         success {
             echo '✅ Deployment successful with monitoring stack!'
@@ -110,7 +113,8 @@ pipeline {
         }
         failure {
             echo '❌ Deployment failed! Rolling back...'
-            sh 'docker-compose down'
+            sh 'docker-compose down || true'
+            sh 'docker system prune -af || true'
         }
     }
 }
