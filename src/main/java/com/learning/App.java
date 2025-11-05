@@ -1,4 +1,4 @@
-package main.java.com.learning;
+package com.learning;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
