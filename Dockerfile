@@ -1,23 +1,40 @@
-# Use official Tomcat 9 with JDK 11 (lightweight and stable)
+# ==========================
+# 1️⃣ Build Stage (using Maven)
+# ==========================
+FROM maven:3.9.8-eclipse-temurin-11 AS build
+
+# Set working directory
+WORKDIR /app
+
+# Copy only the pom.xml first to cache dependencies
+COPY pom.xml .
+
+# Download dependencies
+RUN mvn dependency:go-offline -B
+
+# Copy the full source code
+COPY src ./src
+
+# Package the WAR file (skip tests for CI)
+RUN mvn clean package -DskipTests
+
+# ==========================
+# 2️⃣ Runtime Stage (Tomcat)
+# ==========================
 FROM tomcat:9-jdk11-openjdk-slim
 
-# Metadata (optional but good practice)
-LABEL maintainer="bayarmaa01 <b.bayarmaa0321@gmail.com>" \
-      project="Learning Platform" \
-      version="1.0.0"
-
-# Remove default Tomcat applications to avoid clutter
+# Remove default Tomcat apps
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy your built WAR file into Tomcat's webapps directory
-COPY target/learning-platform.war /usr/local/tomcat/webapps/ROOT.war
+# Copy WAR file from build stage
+COPY --from=build /app/target/learning-platform.war /usr/local/tomcat/webapps/learning-platform.war
 
-# Expose Tomcat default port
+# Expose port 8080
 EXPOSE 8080
 
-# Health check to ensure container is alive
-HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
-  CMD curl -f http://localhost:8080/ || exit 1
+# Health check (used by Docker and Jenkins)
+HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
+  CMD curl -f http://localhost:8080/learning-platform/ || exit 1
 
-# Start Tomcat server
+# Start Tomcat
 CMD ["catalina.sh", "run"]
