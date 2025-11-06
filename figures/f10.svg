@@ -1,0 +1,182 @@
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define styles -->
+  <defs>
+    <style>
+      .actor { fill: none; stroke: #2c3e50; stroke-width: 2; }
+      .source-control { fill: #3498db; stroke: #2c3e50; stroke-width: 2; }
+      .cicd-system { fill: #e74c3c; stroke: #c0392b; stroke-width: 2; }
+      .monitoring { fill: #f39c12; stroke: #e67e22; stroke-width: 2; }
+      .infrastructure { fill: #9b59b6; stroke: #8e44ad; stroke-width: 2; }
+      .workflow-box { fill: #ffffff; stroke: #95a5a6; stroke-width: 2; }
+      .workflow-blue { fill: #e3f2fd; stroke: #3498db; stroke-width: 3; }
+      .workflow-orange { fill: #fff8e1; stroke: #f39c12; stroke-width: 3; }
+      .workflow-green { fill: #e8f5e9; stroke: #27ae60; stroke-width: 3; }
+      .text { font-family: Arial, sans-serif; font-size: 13px; fill: #2c3e50; text-anchor: start; }
+      .text-white { font-family: Arial, sans-serif; font-size: 13px; fill: #ffffff; font-weight: bold; text-anchor: middle; }
+      .text-title { font-family: Arial, sans-serif; font-size: 16px; fill: #2c3e50; font-weight: bold; text-anchor: middle; }
+      .text-legend { font-family: Arial, sans-serif; font-size: 18px; fill: #2c3e50; font-weight: bold; text-anchor: start; }
+      .arrow-dev { stroke: #3498db; stroke-width: 3; fill: none; marker-end: url(#arrowhead-blue); }
+      .arrow-admin { stroke: #f39c12; stroke-width: 3; fill: none; marker-end: url(#arrowhead-orange); }
+      .arrow-devops { stroke: #27ae60; stroke-width: 3; fill: none; marker-end: url(#arrowhead-green); }
+      .arrow-system { stroke: #95a5a6; stroke-width: 2; fill: none; stroke-dasharray: 5,5; }
+      .boundary { fill: none; stroke: #95a5a6; stroke-width: 2; stroke-dasharray: 8,4; }
+    </style>
+    <marker id="arrowhead-blue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#3498db" />
+    </marker>
+    <marker id="arrowhead-orange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#f39c12" />
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#27ae60" />
+    </marker>
+  </defs>
+
+  <!-- Main System Boundary (Dashed) -->
+  <rect x="50" y="20" width="1500" height="520" class="boundary" rx="10"/>
+
+  <!-- ========== WORKFLOW BOXES AT TOP ========== -->
+  
+  <!-- Developer Workflow Box -->
+  <rect x="70" y="40" width="440" height="120" class="workflow-blue" rx="8"/>
+  <text x="290" y="65" class="text-title" fill="#3498db">Developer Workflow</text>
+  <text x="90" y="90" class="text">Step 1: Push code changes to GitHub repository</text>
+  <text x="90" y="110" class="text">Step 2: GitHub webhook triggers Jenkins automatically</text>
+  <text x="90" y="130" class="text">Step 3: Jenkins builds and tests application with Maven</text>
+  <text x="90" y="150" class="text">Step 4: Docker image created and deployed to EC2</text>
+
+  <!-- Administrator Workflow Box -->
+  <rect x="580" y="40" width="440" height="120" class="workflow-orange" rx="8"/>
+  <text x="800" y="65" class="text-title" fill="#f39c12">Administrator Workflow</text>
+  <text x="600" y="90" class="text">Step 1: Access Grafana dashboard interface</text>
+  <text x="600" y="110" class="text">Step 2: Grafana queries Prometheus for metric data</text>
+  <text x="600" y="130" class="text">Step 3: Prometheus collects metrics from containers</text>
+  <text x="600" y="150" class="text">Step 4: Monitor health, set alerts, analyze trends</text>
+
+  <!-- DevOps Engineer Workflow Box -->
+  <rect x="1090" y="40" width="440" height="120" class="workflow-green" rx="8"/>
+  <text x="1310" y="65" class="text-title" fill="#27ae60">DevOps Engineer Workflow</text>
+  <text x="1110" y="90" class="text">Step 1: Configure Jenkins server and install plugins</text>
+  <text x="1110" y="110" class="text">Step 2: Define CI/CD pipeline stages in Jenkinsfile</text>
+  <text x="1110" y="130" class="text">Step 3: Set up monitoring with Prometheus & Grafana</text>
+  <text x="1110" y="150" class="text">Step 4: Configure webhooks and automated triggers</text>
+
+  <!-- ========== COMPONENT DIAGRAMS ========== -->
+
+  <!-- Developer Flow Components -->
+  <g id="dev-flow">
+    <!-- GitHub -->
+    <rect x="180" y="220" width="140" height="60" class="source-control" rx="8"/>
+    <text x="250" y="255" class="text-white">GitHub</text>
+    
+    <!-- Jenkins -->
+    <rect x="180" y="320" width="140" height="60" class="cicd-system" rx="8"/>
+    <text x="250" y="355" class="text-white">Jenkins</text>
+    
+    <!-- Docker -->
+    <rect x="180" y="420" width="140" height="60" class="infrastructure" rx="8"/>
+    <text x="250" y="455" class="text-white">Docker</text>
+    
+    <!-- Arrows -->
+    <path d="M 250 280 L 250 320" class="arrow-dev"/>
+    <path d="M 250 380 L 250 420" class="arrow-dev"/>
+  </g>
+
+  <!-- Administrator Flow Components -->
+  <g id="admin-flow">
+    <!-- Grafana -->
+    <rect x="690" y="220" width="140" height="60" class="monitoring" rx="8"/>
+    <text x="760" y="255" class="text-white">Grafana</text>
+    
+    <!-- Prometheus -->
+    <rect x="690" y="320" width="140" height="60" class="monitoring" rx="8"/>
+    <text x="760" y="355" class="text-white">Prometheus</text>
+    
+    <!-- Containers -->
+    <rect x="690" y="420" width="140" height="60" class="infrastructure" rx="8"/>
+    <text x="760" y="455" class="text-white">Containers</text>
+    
+    <!-- Arrows -->
+    <path d="M 760 280 L 760 320" class="arrow-admin"/>
+    <path d="M 760 380 L 760 420" class="arrow-admin"/>
+  </g>
+
+  <!-- DevOps Flow Components -->
+  <g id="devops-flow">
+    <!-- Jenkins Config -->
+    <rect x="1200" y="220" width="140" height="60" class="cicd-system" rx="8"/>
+    <text x="1270" y="245" class="text-white">Jenkins</text>
+    <text x="1270" y="265" class="text-white">Configuration</text>
+    
+    <!-- Pipeline -->
+    <rect x="1200" y="320" width="140" height="60" class="source-control" rx="8"/>
+    <text x="1270" y="355" class="text-white">Pipeline</text>
+    
+    <!-- Monitoring Setup -->
+    <rect x="1200" y="420" width="140" height="60" class="monitoring" rx="8"/>
+    <text x="1270" y="445" class="text-white">Monitoring</text>
+    <text x="1270" y="465" class="text-white">Setup</text>
+    
+    <!-- Arrows -->
+    <path d="M 1270 280 L 1270 320" class="arrow-devops"/>
+    <path d="M 1270 380 L 1270 420" class="arrow-devops"/>
+  </g>
+
+  <!-- Cross connections (dashed) -->
+  <path d="M 320 350 L 690 350" class="arrow-system"/>
+  <path d="M 830 450 L 1200 450" class="arrow-system"/>
+
+  <!-- EC2 Instance (shared infrastructure) -->
+  <rect x="400" y="420" width="140" height="60" class="infrastructure" rx="8"/>
+  <text x="470" y="445" class="text-white">AWS EC2</text>
+  <text x="470" y="465" class="text-white">Instance</text>
+  <path d="M 320 450 L 400 450" class="arrow-dev"/>
+
+  <!-- ========== LEGEND SECTION ========== -->
+  
+  <rect x="70" y="580" width="1460" height="280" class="workflow-box" rx="10"/>
+  <text x="90" y="615" class="text-legend">Legend</text>
+
+  <!-- Component Types Row -->
+  <rect x="110" y="645" width="140" height="50" class="source-control" rx="5"/>
+  <text x="180" y="675" class="text-white">Source Control</text>
+
+  <rect x="280" y="645" width="140" height="50" class="cicd-system" rx="5"/>
+  <text x="350" y="675" class="text-white">CI/CD System</text>
+
+  <rect x="450" y="645" width="140" height="50" class="monitoring" rx="5"/>
+  <text x="520" y="675" class="text-white">Monitoring</text>
+
+  <rect x="620" y="645" width="140" height="50" class="infrastructure" rx="5"/>
+  <text x="690" y="675" class="text-white">Infrastructure</text>
+
+  <!-- Flow Types -->
+  <text x="110" y="740" class="text" font-weight="bold">Flow Types:</text>
+  
+  <line x1="110" y1="760" x2="200" y2="760" class="arrow-dev"/>
+  <text x="215" y="765" class="text">Developer Flow</text>
+
+  <line x1="110" y1="790" x2="200" y2="790" class="arrow-admin"/>
+  <text x="215" y="795" class="text">Administrator Flow</text>
+
+  <line x1="110" y1="820" x2="200" y2="820" class="arrow-devops"/>
+  <text x="215" y="825" class="text">DevOps Engineer Flow</text>
+
+  <line x1="430" y1="760" x2="520" y2="760" class="arrow-system"/>
+  <text x="535" y="765" class="text">System Connection</text>
+
+  <!-- System Boundary Example -->
+  <rect x="430" y="780" width="120" height="50" class="boundary" rx="5"/>
+  <text x="535" y="810" class="text">System Boundary</text>
+
+  <!-- System Actor Example -->
+  <g transform="translate(820, 750)">
+    <circle cx="0" cy="0" r="20" class="actor"/>
+    <line x1="0" y1="20" x2="0" y2="50" class="actor"/>
+    <line x1="0" y1="32" x2="-18" y2="45" class="actor"/>
+    <line x1="0" y1="32" x2="18" y2="45" class="actor"/>
+    <line x1="0" y1="50" x2="-15" y2="75" class="actor"/>
+    <line x1="0" y1="50" x2="15" y2="75" class="actor"/>
+  </g>
+  <text x="860" y="810" class="text">System Actor</text>
+</svg>
