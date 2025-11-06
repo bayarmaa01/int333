@@ -79,7 +79,9 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            export COMPOSE_HTTP_TIMEOUT=300
             cd ~/int-project
             git pull https://github.com/bayarmaa01/int333.git main
+            docker-compose down
             docker-compose pull
             docker-compose up -d --build
