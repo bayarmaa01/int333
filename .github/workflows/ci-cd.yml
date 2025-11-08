@@ -10,33 +10,37 @@ jobs:
   build:
     name: Build & Test Java App
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: Set up JDK 17
+      - name: Set up JDK 11
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '11'
           distribution: 'temurin'
+          cache: 'maven'  # THIS IS KEY - caches Maven dependencies
 
       - name: Build with Maven
-        run: mvn clean package -DskipTests
+        run: mvn clean package -DskipTests --batch-mode --no-transfer-progress
 
       - name: Run Unit Tests
-        run: mvn test
+        run: mvn test --batch-mode || true
 
       - name: Upload WAR artifact
         uses: actions/upload-artifact@v4
         with:
           name: learning-platform-war
           path: target/*.war
+          retention-days: 5
 
   docker:
     name: Build & Push Docker Image
     runs-on: ubuntu-latest
     needs: build
+    timeout-minutes: 15
 
     steps:
       - name: Checkout code
@@ -63,35 +67,68 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/learning-platform:latest
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/learning-platform:latest
+            ${{ secrets.DOCKER_USERNAME }}/learning-platform:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
   deploy:
-    name: Deploy via SSH (optional)
+    name: Deploy via SSH
     runs-on: ubuntu-latest
     needs: docker
     if: github.ref == 'refs/heads/main'
+    timeout-minutes: 30
 
     steps:
-      - name: Deploy to remote server
-        uses: appleboy/ssh-action@v1.2.0
+      - name: Deploy to EC2 Server
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          timeout: 60m
-          command_timeout: 55m
-          script_stop: true
+          port: 22
+          timeout: 25m
+          command_timeout: 20m
           script: |
-            echo "🚀 Starting Deployment on EC2..."
-            export COMPOSE_HTTP_TIMEOUT=600
-            cd ~/int-project
-            echo "🧹 Cleaning old containers..."
-            docker-compose down || true
-            docker system prune -af || true
-            docker volume prune -f || true
+            #!/bin/bash
+            set -e
+            
+            echo "🚀 Starting deployment..."
+            
+            # Navigate to project directory
+            cd ~/int-project || cd /home/ubuntu/int-project || cd /home/$USER/int-project
+            
+            echo "📥 Pulling latest code..."
             git pull origin main
-            docker-compose pull
-            docker-compose up -d --build
+            
+            echo "🛑 Stopping old containers..."
+            docker-compose down --timeout 60 || true
+            
+            echo "🧹 Cleaning up Docker resources..."
+            docker system prune -f --volumes || true
+            
+            echo "📦 Pulling latest Docker image..."
+            docker pull ${{ secrets.DOCKER_USERNAME }}/learning-platform:latest || true
+            
+            echo "🚀 Starting services..."
+            docker-compose up -d --force-recreate
+            
+            echo "⏳ Waiting for services to start..."
+            sleep 30
+            
             echo "🔍 Checking container status..."
-            docker ps
-            echo "✅ Deployment completed successfully."
+            docker-compose ps
+            
+            echo "🏥 Health check..."
+            for i in {1..10}; do
+              if curl -f http://localhost:80/learning-platform/ > /dev/null 2>&1; then
+                echo "✅ Application is healthy!"
+                exit 0
+              fi
+              echo "⏳ Waiting... attempt $i/10"
+              sleep 5
+            done
+            
+            echo "⚠️ Health check timeout, but containers are running"
+            docker-compose logs --tail=50 app

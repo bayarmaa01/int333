@@ -2,21 +2,14 @@ version: '3.8'
 
 services:
   app:
+    image: ${DOCKER_USERNAME:-bayarmaa}/learning-platform:latest
+    build: .  # Only used if image doesn't exist
     container_name: learning-platform
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: learning-platform:latest
     ports:
       - "80:8080"
     restart: unless-stopped
     networks:
       - monitoring
-    depends_on:
-      - prometheus
-      - grafana
-      - cadvisor
-      - node-exporter
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/learning-platform/"]
       interval: 30s
@@ -30,12 +23,11 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus-data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
-      - '--web.enable-lifecycle'
     restart: unless-stopped
     networks:
       - monitoring
@@ -46,26 +38,27 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin123
+      - GF_SECURITY_ADMIN_USER=admin
     volumes:
       - grafana-data:/var/lib/grafana
     restart: unless-stopped
-    depends_on:
-      - prometheus
     networks:
       - monitoring
+    depends_on:
+      - prometheus
 
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor:latest
+    image: gcr.io/cadvisor/cadvisor:v0.47.0
     container_name: cadvisor
     ports:
       - "8081:8080"
     volumes:
       - /:/rootfs:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /var/lib/docker/:/var/lib/docker:ro
+      - /var/run:/var/run:ro
       - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    privileged: true
     restart: unless-stopped
     networks:
       - monitoring
@@ -75,6 +68,13 @@ services:
     container_name: node-exporter
     ports:
       - "9100:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
     restart: unless-stopped
     networks:
       - monitoring

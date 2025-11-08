@@ -1,0 +1,161 @@
+<svg viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title-text { fill: #2C3E50; font-family: Arial, sans-serif; font-size: 28px; font-weight: bold; text-anchor: middle; }
+      .subtitle-text { fill: #7F8C8D; font-family: Arial, sans-serif; font-size: 14px; text-anchor: middle; font-style: italic; }
+      .section-header { fill: white; font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; text-anchor: middle; }
+      .traditional-box { fill: #E74C3C; stroke: #C0392B; stroke-width: 2; }
+      .automated-box { fill: #27AE60; stroke: #229954; stroke-width: 2; }
+      .step-box { fill: white; stroke: #34495E; stroke-width: 2; }
+      .step-text { fill: #2C3E50; font-family: Arial, sans-serif; font-size: 13px; }
+      .step-number { fill: white; font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; text-anchor: middle; }
+      .number-circle { fill: #34495E; }
+      .issue-box { fill: #FFE5E5; stroke: #E74C3C; stroke-width: 2; stroke-dasharray: 5,5; }
+      .issue-text { fill: #C0392B; font-family: Arial, sans-serif; font-size: 11px; }
+      .benefit-box { fill: #E8F8F5; stroke: #27AE60; stroke-width: 2; stroke-dasharray: 5,5; }
+      .benefit-text { fill: #229954; font-family: Arial, sans-serif; font-size: 11px; }
+      .arrow { stroke: #34495E; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+      .arrow-auto { stroke: #27AE60; stroke-width: 3; fill: none; marker-end: url(#arrowhead-green); }
+      .time-text { fill: #E74C3C; font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; }
+      .time-text-good { fill: #27AE60; font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; }
+      .vs-text { fill: #34495E; font-family: Arial, sans-serif; font-size: 48px; font-weight: bold; text-anchor: middle; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#34495E" />
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#27AE60" />
+    </marker>
+  </defs>
+  
+  <!-- Main Title -->
+  <text x="700" y="40" class="title-text">Traditional vs Automated Deployment</text>
+  <text x="700" y="65" class="subtitle-text">Figure 1.1 - Comparison of Deployment Approaches</text>
+  
+  <!-- Traditional Deployment Side -->
+  <rect x="50" y="100" width="600" height="50" class="traditional-box" rx="5"/>
+  <text x="350" y="133" class="section-header">TRADITIONAL MANUAL DEPLOYMENT</text>
+  
+  <!-- Step 1: Code Commit -->
+  <rect x="80" y="180" width="540" height="70" class="step-box" rx="4"/>
+  <circle cx="105" cy="215" r="18" class="number-circle"/>
+  <text x="105" y="221" class="step-number">1</text>
+  <text x="140" y="210" class="step-text" font-weight="bold">Developer commits code to GitHub</text>
+  <text x="140" y="230" class="step-text">• Manual push to repository</text>
+  <text x="140" y="245" class="step-text">• No automated notification</text>
+  
+  <line x1="350" y1="250" x2="350" y2="280" class="arrow"/>
+  
+  <!-- Step 2: Manual Build -->
+  <rect x="80" y="280" width="540" height="70" class="step-box" rx="4"/>
+  <circle cx="105" cy="315" r="18" class="number-circle"/>
+  <text x="105" y="321" class="step-number">2</text>
+  <text x="140" y="310" class="step-text" font-weight="bold">Developer manually builds project</text>
+  <text x="140" y="330" class="step-text">• Run: mvn clean package</text>
+  <text x="140" y="345" class="step-text">• Wait for compilation (~3-5 min)</text>
+  
+  <line x1="350" y1="350" x2="350" y2="380" class="arrow"/>
+  
+  <!-- Step 3: Manual Testing -->
+  <rect x="80" y="380" width="540" height="70" class="step-box" rx="4"/>
+  <circle cx="105" cy="415" r="18" class="number-circle"/>
+  <text x="105" y="421" class="step-number">3</text>
+  <text x="140" y="410" class="step-text" font-weight="bold">Manually run tests</text>
+  <text x="140" y="430" class="step-text">• Execute test suite manually</text>
+  <text x="140" y="445" class="step-text">• Review results, fix failures</text>
+  
+  <line x1="350" y1="450" x2="350" y2="480" class="arrow"/>
+  
+  <!-- Step 4: Manual Deploy -->
+  <rect x="80" y="480" width="540" height="70" class="step-box" rx="4"/>
+  <circle cx="105" cy="515" r="18" class="number-circle"/>
+  <text x="105" y="521" class="step-number">4</text>
+  <text x="140" y="510" class="step-text" font-weight="bold">Manual deployment to server</text>
+  <text x="140" y="530" class="step-text">• SSH into server</text>
+  <text x="140" y="545" class="step-text">• Copy WAR file, restart Tomcat</text>
+  
+  <line x1="350" y1="550" x2="350" y2="580" class="arrow"/>
+  
+  <!-- Step 5: Manual Verification -->
+  <rect x="80" y="580" width="540" height="70" class="step-box" rx="4"/>
+  <circle cx="105" cy="615" r="18" class="number-circle"/>
+  <text x="105" y="621" class="step-number">5</text>
+  <text x="140" y="610" class="step-text" font-weight="bold">Manually verify deployment</text>
+  <text x="140" y="630" class="step-text">• Test application manually</text>
+  <text x="140" y="645" class="step-text">• Check logs for errors</text>
+  
+  <!-- Issues Box -->
+  <rect x="80" y="670" width="540" height="110" class="issue-box" rx="4"/>
+  <text x="350" y="690" class="issue-text" font-weight="bold" text-anchor="middle">❌ COMMON ISSUES:</text>
+  <text x="100" y="710" class="issue-text">• Time consuming: 30-60+ minutes per deployment</text>
+  <text x="100" y="730" class="issue-text">• Human errors: Configuration mistakes, forgotten steps</text>
+  <text x="100" y="750" class="issue-text">• Inconsistent: Different results on different machines</text>
+  <text x="100" y="770" class="issue-text">• No rollback: Manual recovery from failures</text>
+  
+  <text x="350" y="810" class="time-text" text-anchor="middle">⏱️ TOTAL TIME: 30-60+ MINUTES</text>
+  
+  <!-- VS Divider -->
+  <text x="700" y="500" class="vs-text">VS</text>
+  <line x1="700" y1="150" x2="700" y2="850" stroke="#95A5A6" stroke-width="3" stroke-dasharray="10,10"/>
+  
+  <!-- Automated Deployment Side -->
+  <rect x="750" y="100" width="600" height="50" class="automated-box" rx="5"/>
+  <text x="1050" y="133" class="section-header">AUTOMATED CI/CD PIPELINE</text>
+  
+  <!-- Auto Step 1: Code Commit -->
+  <rect x="780" y="180" width="540" height="70" class="step-box" rx="4"/>
+  <circle cx="805" cy="215" r="18" style="fill: #27AE60;"/>
+  <text x="805" y="221" class="step-number">1</text>
+  <text x="840" y="210" class="step-text" font-weight="bold">Developer commits code to GitHub</text>
+  <text x="840" y="230" class="step-text">• Automatic webhook trigger</text>
+  <text x="840" y="245" class="step-text">• Jenkins notified instantly</text>
+  
+  <line x1="1050" y1="250" x2="1050" y2="280" class="arrow-auto"/>
+  
+  <!-- Auto Step 2: Automated Build -->
+  <rect x="780" y="280" width="540" height="90" class="step-box" rx="4"/>
+  <circle cx="805" cy="325" r="18" style="fill: #27AE60;"/>
+  <text x="805" y="331" class="step-number">2</text>
+  <text x="840" y="315" class="step-text" font-weight="bold">Jenkins automatically builds & tests</text>
+  <text x="840" y="335" class="step-text">• Maven build (3 min)</text>
+  <text x="840" y="350" class="step-text">• JUnit tests (1 min)</text>
+  <text x="840" y="365" class="step-text">• Docker image creation (2 min)</text>
+  
+  <line x1="1050" y1="370" x2="1050" y2="400" class="arrow-auto"/>
+  
+  <!-- Auto Step 3: Automated Deploy -->
+  <rect x="780" y="400" width="540" height="90" class="step-box" rx="4"/>
+  <circle cx="805" cy="445" r="18" style="fill: #27AE60;"/>
+  <text x="805" y="451" class="step-number">3</text>
+  <text x="840" y="435" class="step-text" font-weight="bold">Automated deployment & verification</text>
+  <text x="840" y="455" class="step-text">• Docker Compose orchestration</text>
+  <text x="840" y="470" class="step-text">• Health checks & rollback</text>
+  <text x="840" y="485" class="step-text">• Monitoring stack initialization</text>
+  
+  <line x1="1050" y1="490" x2="1050" y2="520" class="arrow-auto"/>
+  
+  <!-- Auto Step 4: Monitoring -->
+  <rect x="780" y="520" width="540" height="70" class="step-box" rx="4"/>
+  <circle cx="805" cy="555" r="18" style="fill: #27AE60;"/>
+  <text x="805" y="561" class="step-number">4</text>
+  <text x="840" y="550" class="step-text" font-weight="bold">Continuous monitoring enabled</text>
+  <text x="840" y="570" class="step-text">• Prometheus metrics collection</text>
+  <text x="840" y="585" class="step-text">• Grafana dashboards active</text>
+  
+  <!-- Benefits Box -->
+  <rect x="780" y="610" width="540" height="170" class="benefit-box" rx="4"/>
+  <text x="1050" y="630" class="benefit-text" font-weight="bold" text-anchor="middle">✅ KEY BENEFITS:</text>
+  <text x="800" y="650" class="benefit-text">• Fast: 8-12 minutes end-to-end</text>
+  <text x="800" y="670" class="benefit-text">• Reliable: Consistent, repeatable deployments</text>
+  <text x="800" y="690" class="benefit-text">• Automated testing: Catch bugs before production</text>
+  <text x="800" y="710" class="benefit-text">• Zero-downtime: Rolling deployments</text>
+  <text x="800" y="730" class="benefit-text">• Instant rollback: Automatic failure recovery</text>
+  <text x="800" y="750" class="benefit-text">• Complete visibility: Metrics & monitoring</text>
+  <text x="800" y="770" class="benefit-text">• Developer focus: More time coding, less ops work</text>
+  
+  <text x="1050" y="810" class="time-text-good" text-anchor="middle">⚡ TOTAL TIME: 8-12 MINUTES</text>
+  
+  <!-- Bottom comparison -->
+  <rect x="50" y="850" width="1300" height="30" style="fill: #ECF0F1; stroke: #BDC3C7; stroke-width: 2;" rx="5"/>
+  <text x="700" y="872" style="fill: #2C3E50; font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; text-anchor: middle;">🚀 Result: 5-6x faster deployment with 99% fewer errors and complete automation</text>
+</svg>
