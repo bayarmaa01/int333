@@ -22,10 +22,3 @@ scrape_configs:
       - targets: ['cadvisor:8080']
         labels:
           instance: 'docker-containers'
-
-  - job_name: 'learning-platform'
-    metrics_path: '/learning-platform/api/health'
-    static_configs:
-      - targets: ['app:8080']
-        labels:
-          instance: 'learning-app'
