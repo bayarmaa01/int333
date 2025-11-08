@@ -78,13 +78,20 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          timeout: 40m
+          timeout: 60m
+          command_timeout: 55m
           script_stop: true
           script: |
-            export COMPOSE_HTTP_TIMEOUT=300
+            echo "🚀 Starting Deployment on EC2..."
+            export COMPOSE_HTTP_TIMEOUT=600
             cd ~/int-project
-            git pull https://github.com/bayarmaa01/int333.git main
+            echo "🧹 Cleaning old containers..."
             docker-compose down || true
+            docker system prune -af || true
+            docker volume prune -f || true
+            git pull origin main
             docker-compose pull
             docker-compose up -d --build
+            echo "🔍 Checking container status..."
+            docker ps
             echo "✅ Deployment completed successfully."
