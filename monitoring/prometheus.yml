@@ -24,7 +24,7 @@ scrape_configs:
           instance: 'docker-containers'
 
   - job_name: 'learning-platform'
-    metrics_path: '/learning-platform/api/health'
+    metrics_path: '/learning-platform/metrics'
     static_configs:
       - targets: ['app:8080']
         labels:
