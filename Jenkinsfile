@@ -47,7 +47,9 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        docker-compose build app
+                        echo "🐳 Building Docker image..."
+                        docker build -t learning-platform:latest .
+                        echo "✅ Docker image built"
                         # Optional: Tag and push to Docker Hub
                         # docker tag learning-platform:latest bayarmaa/learning-platform:latest
                         # docker push bayarmaa01/learning-platform:latest
