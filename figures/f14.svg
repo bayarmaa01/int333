@@ -1,0 +1,196 @@
+<svg viewBox="0 0 1400 1800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define styles -->
+  <defs>
+    <style>
+      .table-header { fill: #2c3e50; stroke: #000; stroke-width: 1; }
+      .table-cell { fill: #ffffff; stroke: #000; stroke-width: 1; }
+      .table-text { font-family: Arial, sans-serif; font-size: 13px; fill: #000; }
+      .table-text-white { font-family: Arial, sans-serif; font-size: 13px; fill: #fff; font-weight: bold; }
+      .title { font-family: Arial, sans-serif; font-size: 20px; fill: #2c3e50; font-weight: bold; text-anchor: middle; }
+      .bar-before { fill: #e74c3c; }
+      .bar-after { fill: #27ae60; }
+      .bar-text { font-family: Arial, sans-serif; font-size: 12px; fill: #fff; font-weight: bold; }
+      .label-text { font-family: Arial, sans-serif; font-size: 13px; fill: #2c3e50; font-weight: bold; }
+      .improvement-text { font-family: Arial, sans-serif; font-size: 13px; fill: #27ae60; font-weight: bold; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="700" y="35" class="title" font-size="22">Table 6.1: Deployment Performance Comparison</text>
+
+  <!-- Table Header -->
+  <rect x="50" y="60" width="300" height="40" class="table-header"/>
+  <rect x="350" y="60" width="350" height="40" class="table-header"/>
+  <rect x="700" y="60" width="350" height="40" class="table-header"/>
+  <rect x="1050" y="60" width="300" height="40" class="table-header"/>
+  
+  <text x="200" y="85" class="table-text-white" text-anchor="middle">Metric</text>
+  <text x="525" y="85" class="table-text-white" text-anchor="middle">Before CI/CD</text>
+  <text x="875" y="85" class="table-text-white" text-anchor="middle">After CI/CD</text>
+  <text x="1200" y="85" class="table-text-white" text-anchor="middle">Improvement</text>
+
+  <!-- Row 1: Deployment Time -->
+  <rect x="50" y="100" width="300" height="50" class="table-cell"/>
+  <rect x="350" y="100" width="350" height="50" class="table-cell"/>
+  <rect x="700" y="100" width="350" height="50" class="table-cell"/>
+  <rect x="1050" y="100" width="300" height="50" class="table-cell"/>
+  
+  <text x="60" y="130" class="table-text" font-weight="bold">Deployment Time</text>
+  <text x="360" y="130" class="table-text">4-8 hours</text>
+  <text x="710" y="130" class="table-text">8-12 minutes</text>
+  <text x="1060" y="130" class="improvement-text">96% reduction</text>
+
+  <!-- Row 2: Manual Steps -->
+  <rect x="50" y="150" width="300" height="50" class="table-cell"/>
+  <rect x="350" y="150" width="350" height="50" class="table-cell"/>
+  <rect x="700" y="150" width="350" height="50" class="table-cell"/>
+  <rect x="1050" y="150" width="300" height="50" class="table-cell"/>
+  
+  <text x="60" y="180" class="table-text" font-weight="bold">Manual Steps</text>
+  <text x="360" y="180" class="table-text">15+ steps</text>
+  <text x="710" y="180" class="table-text">1 step (git push)</text>
+  <text x="1060" y="180" class="improvement-text">93% reduction</text>
+
+  <!-- Row 3: Deployment Frequency -->
+  <rect x="50" y="200" width="300" height="50" class="table-cell"/>
+  <rect x="350" y="200" width="350" height="50" class="table-cell"/>
+  <rect x="700" y="200" width="350" height="50" class="table-cell"/>
+  <rect x="1050" y="200" width="300" height="50" class="table-cell"/>
+  
+  <text x="60" y="230" class="table-text" font-weight="bold">Deployment Frequency</text>
+  <text x="360" y="230" class="table-text">Weekly</text>
+  <text x="710" y="230" class="table-text">On-demand (multiple/day)</text>
+  <text x="1060" y="230" class="improvement-text">700% increase</text>
+
+  <!-- Row 4: Error Rate -->
+  <rect x="50" y="250" width="300" height="50" class="table-cell"/>
+  <rect x="350" y="250" width="350" height="50" class="table-cell"/>
+  <rect x="700" y="250" width="350" height="50" class="table-cell"/>
+  <rect x="1050" y="250" width="300" height="50" class="table-cell"/>
+  
+  <text x="60" y="280" class="table-text" font-weight="bold">Error Rate</text>
+  <text x="360" y="280" class="table-text">~30% (manual errors)</text>
+  <text x="710" y="280" class="table-text">~5% (code issues only)</text>
+  <text x="1060" y="280" class="improvement-text">83% reduction</text>
+
+  <!-- Row 5: Rollback Time -->
+  <rect x="50" y="300" width="300" height="50" class="table-cell"/>
+  <rect x="350" y="300" width="350" height="50" class="table-cell"/>
+  <rect x="700" y="300" width="350" height="50" class="table-cell"/>
+  <rect x="1050" y="300" width="300" height="50" class="table-cell"/>
+  
+  <text x="60" y="330" class="table-text" font-weight="bold">Rollback Time</text>
+  <text x="360" y="330" class="table-text">2-4 hours</text>
+  <text x="710" y="330" class="table-text">1-2 minutes</text>
+  <text x="1060" y="330" class="improvement-text">99% reduction</text>
+
+  <!-- Row 6: Environment Consistency -->
+  <rect x="50" y="350" width="300" height="50" class="table-cell"/>
+  <rect x="350" y="350" width="350" height="50" class="table-cell"/>
+  <rect x="700" y="350" width="350" height="50" class="table-cell"/>
+  <rect x="1050" y="350" width="300" height="50" class="table-cell"/>
+  
+  <text x="60" y="380" class="table-text" font-weight="bold">Environment Consistency</text>
+  <text x="360" y="380" class="table-text">60% (drift issues)</text>
+  <text x="710" y="380" class="table-text">100% (containerized)</text>
+  <text x="1060" y="380" class="improvement-text">40% improvement</text>
+
+  <!-- Row 7: Team Productivity -->
+  <rect x="50" y="400" width="300" height="50" class="table-cell"/>
+  <rect x="350" y="400" width="350" height="50" class="table-cell"/>
+  <rect x="700" y="400" width="350" height="50" class="table-cell"/>
+  <rect x="1050" y="400" width="300" height="50" class="table-cell"/>
+  
+  <text x="60" y="430" class="table-text" font-weight="bold">Team Productivity</text>
+  <text x="360" y="430" class="table-text">20 hours/week on deployments</text>
+  <text x="710" y="430" class="table-text">2 hours/week monitoring</text>
+  <text x="1060" y="430" class="improvement-text">90% time saved</text>
+
+  <!-- Chart Section -->
+  <text x="700" y="520" class="title" font-size="20">Figure 6.8 - Deployment Performance Comparison</text>
+
+  <!-- Deployment Time Chart -->
+  <text x="50" y="580" class="label-text">Deployment Time</text>
+  <text x="50" y="610" class="label-text" font-size="11">Before CI/CD</text>
+  <rect x="180" y="595" width="480" height="30" class="bar-before"/>
+  <text x="190" y="615" class="bar-text">4-8 hours</text>
+  <text x="680" y="615" class="improvement-text">96% reduction ↓</text>
+
+  <text x="50" y="650" class="label-text" font-size="11">After CI/CD</text>
+  <rect x="180" y="635" width="24" height="30" class="bar-after"/>
+  <text x="190" y="655" class="bar-text" font-size="10">8-12 min</text>
+
+  <!-- Manual Steps Chart -->
+  <text x="50" y="720" class="label-text">Manual Steps</text>
+  <text x="50" y="750" class="label-text" font-size="11">Before CI/CD</text>
+  <rect x="180" y="735" width="300" height="30" class="bar-before"/>
+  <text x="190" y="755" class="bar-text">15+ steps</text>
+  <text x="500" y="755" class="improvement-text">93% reduction ↓</text>
+
+  <text x="50" y="790" class="label-text" font-size="11">After CI/CD</text>
+  <rect x="180" y="775" width="20" height="30" class="bar-after"/>
+  <text x="190" y="795" class="bar-text" font-size="10">1</text>
+
+  <!-- Error Rate Chart -->
+  <text x="50" y="860" class="label-text">Error Rate</text>
+  <text x="50" y="890" class="label-text" font-size="11">Before CI/CD</text>
+  <rect x="180" y="875" width="360" height="30" class="bar-before"/>
+  <text x="190" y="895" class="bar-text">~30% (manual errors)</text>
+  <text x="560" y="895" class="improvement-text">83% reduction ↓</text>
+
+  <text x="50" y="930" class="label-text" font-size="11">After CI/CD</text>
+  <rect x="180" y="915" width="60" height="30" class="bar-after"/>
+  <text x="190" y="935" class="bar-text">~5%</text>
+
+  <!-- Rollback Time Chart -->
+  <text x="50" y="1000" class="label-text">Rollback Time</text>
+  <text x="50" y="1030" class="label-text" font-size="11">Before CI/CD</text>
+  <rect x="180" y="1015" width="400" height="30" class="bar-before"/>
+  <text x="190" y="1035" class="bar-text">2-4 hours</text>
+  <text x="600" y="1035" class="improvement-text">99% reduction ↓</text>
+
+  <text x="50" y="1070" class="label-text" font-size="11">After CI/CD</text>
+  <rect x="180" y="1055" width="8" height="30" class="bar-after"/>
+  <text x="195" y="1075" class="bar-text" font-size="10">1-2 min</text>
+
+  <!-- Deployment Frequency Chart -->
+  <text x="50" y="1140" class="label-text">Deployment Frequency</text>
+  <text x="50" y="1170" class="label-text" font-size="11">Before CI/CD</text>
+  <rect x="180" y="1155" width="140" height="30" class="bar-before"/>
+  <text x="190" y="1175" class="bar-text">Weekly (1x)</text>
+  <text x="340" y="1175" class="improvement-text">700% increase ↑</text>
+
+  <text x="50" y="1210" class="label-text" font-size="11">After CI/CD</text>
+  <rect x="180" y="1195" width="560" height="30" class="bar-after"/>
+  <text x="190" y="1215" class="bar-text">On-demand (Multiple per day)</text>
+
+  <!-- Team Productivity Chart -->
+  <text x="50" y="1280" class="label-text">Team Productivity (Hours/Week)</text>
+  <text x="50" y="1310" class="label-text" font-size="11">Before CI/CD</text>
+  <rect x="180" y="1295" width="400" height="30" class="bar-before"/>
+  <text x="190" y="1315" class="bar-text">20 hours on deployments</text>
+  <text x="600" y="1315" class="improvement-text">90% time saved ↓</text>
+
+  <text x="50" y="1350" class="label-text" font-size="11">After CI/CD</text>
+  <rect x="180" y="1335" width="40" height="30" class="bar-after"/>
+  <text x="190" y="1355" class="bar-text" font-size="10">2 hrs</text>
+
+  <!-- Legend -->
+  <rect x="400" y="1420" width="600" height="80" fill="#f8f9fa" stroke="#000" stroke-width="1" rx="5"/>
+  <text x="700" y="1445" class="label-text" text-anchor="middle" font-size="14">Legend</text>
+  
+  <rect x="480" y="1460" width="100" height="25" class="bar-before"/>
+  <text x="530" y="1477" class="bar-text">Before CI/CD</text>
+  
+  <rect x="720" y="1460" width="100" height="25" class="bar-after"/>
+  <text x="770" y="1477" class="bar-text">After CI/CD</text>
+
+  <!-- Summary Box -->
+  <rect x="50" y="1550" width="1300" height="200" fill="#e8f5e9" stroke="#27ae60" stroke-width="2" rx="8"/>
+  <text x="700" y="1585" class="title" font-size="18" fill="#27ae60">Key Performance Improvements Summary</text>
+  
+  <text x="70" y="1620" class="label-text" font-size="13">• Deployment time reduced from hours to minutes (96% faster)</text>
+  <text x="70" y="1650" class="label-text" font-size="13">• Manual intervention eliminated (15+ steps to 1 git push)</text>
+  <text x="70" y="1680" class="label-text" font-size="13">• Error rate dropped from 30% to 5% (83% reduction in deployment failures)</text>
+  <text x="70" y="1710" class="label-text" font-size="13">• Team productivity increased by 90% (18 hours/week saved for feature development)</text>
+</svg>

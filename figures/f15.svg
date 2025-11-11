@@ -1,0 +1,136 @@
+<svg viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- Define styles -->
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 24px; fill: #2c3e50; font-weight: bold; text-anchor: middle; }
+      .phase-label { font-family: Arial, sans-serif; font-size: 14px; fill: #2c3e50; font-weight: bold; text-anchor: end; }
+      .day-label { font-family: Arial, sans-serif; font-size: 12px; fill: #2c3e50; font-weight: bold; text-anchor: middle; }
+      .bar { fill: #3498db; stroke: #2980b9; stroke-width: 2; }
+      .bar-half { fill: #95a5a6; stroke: #7f8c8d; stroke-width: 2; }
+      .grid-line { stroke: #ecf0f1; stroke-width: 1; }
+      .legend-text { font-family: Arial, sans-serif; font-size: 13px; fill: #2c3e50; }
+      .duration-text { font-family: Arial, sans-serif; font-size: 12px; fill: #ffffff; font-weight: bold; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="700" y="40" class="title">Project Timeline - Gantt Chart (10 Days)</text>
+
+  <!-- Grid Lines (Vertical) -->
+  <line x1="320" y1="80" x2="320" y2="720" class="grid-line"/>
+  <line x1="420" y1="80" x2="420" y2="720" class="grid-line"/>
+  <line x1="520" y1="80" x2="520" y2="720" class="grid-line"/>
+  <line x1="620" y1="80" x2="620" y2="720" class="grid-line"/>
+  <line x1="720" y1="80" x2="720" y2="720" class="grid-line"/>
+  <line x1="820" y1="80" x2="820" y2="720" class="grid-line"/>
+  <line x1="920" y1="80" x2="920" y2="720" class="grid-line"/>
+  <line x1="1020" y1="80" x2="1020" y2="720" class="grid-line"/>
+  <line x1="1120" y1="80" x2="1120" y2="720" class="grid-line"/>
+  <line x1="1220" y1="80" x2="1220" y2="720" class="grid-line"/>
+  <line x1="1320" y1="80" x2="1320" y2="720" class="grid-line"/>
+
+  <!-- Day Labels -->
+  <text x="370" y="100" class="day-label">Day 1</text>
+  <text x="470" y="100" class="day-label">Day 2</text>
+  <text x="570" y="100" class="day-label">Day 3</text>
+  <text x="670" y="100" class="day-label">Day 4</text>
+  <text x="770" y="100" class="day-label">Day 5</text>
+  <text x="870" y="100" class="day-label">Day 6</text>
+  <text x="970" y="100" class="day-label">Day 7</text>
+  <text x="1070" y="100" class="day-label">Day 8</text>
+  <text x="1170" y="100" class="day-label">Day 9</text>
+  <text x="1270" y="100" class="day-label">Day 10</text>
+
+  <!-- Phase 1: Planning & Setup (Days 1-2) -->
+  <text x="310" y="145" class="phase-label">Phase 1: Planning & Setup</text>
+  <rect x="320" y="125" width="200" height="40" class="bar" rx="5"/>
+  <text x="420" y="150" class="duration-text">2 days</text>
+
+  <!-- Phase 2: Infrastructure Setup (Day 3) -->
+  <text x="310" y="205" class="phase-label">Phase 2: Infrastructure Setup</text>
+  <rect x="520" y="185" width="100" height="40" class="bar" rx="5"/>
+  <text x="570" y="210" class="duration-text">1 day</text>
+
+  <!-- Phase 3: Application Development (Day 4) -->
+  <text x="310" y="265" class="phase-label">Phase 3: Application Development</text>
+  <rect x="620" y="245" width="100" height="40" class="bar" rx="5"/>
+  <text x="670" y="270" class="duration-text">1 day</text>
+
+  <!-- Phase 4: Containerization (Day 5 - Half Day) -->
+  <text x="310" y="325" class="phase-label">Phase 4: Containerization</text>
+  <rect x="720" y="305" width="50" height="40" class="bar-half" rx="5"/>
+  <text x="745" y="330" class="duration-text" font-size="11">0.5d</text>
+
+  <!-- Phase 5: CI/CD Pipeline (Day 6) -->
+  <text x="310" y="385" class="phase-label">Phase 5: CI/CD Pipeline</text>
+  <rect x="820" y="365" width="100" height="40" class="bar" rx="5"/>
+  <text x="870" y="390" class="duration-text">1 day</text>
+
+  <!-- Phase 6: Monitoring Stack (Day 7) -->
+  <text x="310" y="445" class="phase-label">Phase 6: Monitoring Stack</text>
+  <rect x="920" y="425" width="100" height="40" class="bar" rx="5"/>
+  <text x="970" y="450" class="duration-text">1 day</text>
+
+  <!-- Phase 7: Testing & Validation (Day 8) -->
+  <text x="310" y="505" class="phase-label">Phase 7: Testing & Validation</text>
+  <rect x="1020" y="485" width="100" height="40" class="bar" rx="5"/>
+  <text x="1070" y="510" class="duration-text">1 day</text>
+
+  <!-- Phase 8: Documentation (Day 9) -->
+  <text x="310" y="565" class="phase-label">Phase 8: Documentation</text>
+  <rect x="1120" y="545" width="100" height="40" class="bar" rx="5"/>
+  <text x="1170" y="570" class="duration-text">1 day</text>
+
+  <!-- Phase 9: Final Review (Day 10 - Half Day) -->
+  <text x="310" y="625" class="phase-label">Phase 9: Final Review</text>
+  <rect x="1220" y="605" width="50" height="40" class="bar-half" rx="5"/>
+  <text x="1245" y="630" class="duration-text" font-size="11">0.5d</text>
+
+  <!-- Horizontal Grid Lines -->
+  <line x1="50" y1="165" x2="1320" y2="165" class="grid-line" stroke-width="2"/>
+  <line x1="50" y1="225" x2="1320" y2="225" class="grid-line" stroke-width="2"/>
+  <line x1="50" y1="285" x2="1320" y2="285" class="grid-line" stroke-width="2"/>
+  <line x1="50" y1="345" x2="1320" y2="345" class="grid-line" stroke-width="2"/>
+  <line x1="50" y1="405" x2="1320" y2="405" class="grid-line" stroke-width="2"/>
+  <line x1="50" y1="465" x2="1320" y2="465" class="grid-line" stroke-width="2"/>
+  <line x1="50" y1="525" x2="1320" y2="525" class="grid-line" stroke-width="2"/>
+  <line x1="50" y1="585" x2="1320" y2="585" class="grid-line" stroke-width="2"/>
+  <line x1="50" y1="645" x2="1320" y2="645" class="grid-line" stroke-width="2"/>
+
+  <!-- Border -->
+  <rect x="50" y="110" width="1270" height="535" fill="none" stroke="#2c3e50" stroke-width="2"/>
+
+  <!-- Legend -->
+  <rect x="400" y="720" width="600" height="140" fill="#f8f9fa" stroke="#2c3e50" stroke-width="2" rx="8"/>
+  <text x="700" y="750" class="title" font-size="18">Legend</text>
+  
+  <rect x="450" y="770" width="100" height="30" class="bar" rx="5"/>
+  <text x="570" y="790" class="legend-text">Full Day Work (1 day)</text>
+  
+  <rect x="450" y="815" width="50" height="30" class="bar-half" rx="5"/>
+  <text x="520" y="835" class="legend-text">Half Day Work (0.5 day)</text>
+
+  <!-- Summary Box -->
+  <rect x="1050" y="720" width="300" height="140" fill="#e3f2fd" stroke="#3498db" stroke-width="2" rx="8"/>
+  <text x="1200" y="750" class="title" font-size="16" text-anchor="middle">Project Summary</text>
+  <text x="1070" y="780" class="legend-text" font-size="12">Total Duration: 10 days</text>
+  <text x="1070" y="805" class="legend-text" font-size="12">Full Days: 8 days</text>
+  <text x="1070" y="830" class="legend-text" font-size="12">Half Days: 2 days (0.5 each)</text>
+  <text x="1070" y="855" class="legend-text" font-size="12">Total Effort: ~50 hours</text>
+
+  <!-- Milestone Markers -->
+  <circle cx="520" cy="145" r="8" fill="#e74c3c"/>
+  <text x="540" y="150" class="legend-text" font-size="11" fill="#e74c3c">✓ Setup Complete</text>
+  
+  <circle cx="720" cy="265" r="8" fill="#e74c3c"/>
+  <text x="740" y="270" class="legend-text" font-size="11" fill="#e74c3c">✓ App Ready</text>
+  
+  <circle cx="920" cy="385" r="8" fill="#e74c3c"/>
+  <text x="940" y="390" class="legend-text" font-size="11" fill="#e74c3c">✓ Pipeline Live</text>
+  
+  <circle cx="1120" cy="505" r="8" fill="#e74c3c"/>
+  <text x="1140" y="510" class="legend-text" font-size="11" fill="#e74c3c">✓ Tests Pass</text>
+  
+  <circle cx="1270" cy="625" r="8" fill="#27ae60"/>
+  <text x="1100" y="670" class="legend-text" font-size="13" fill="#27ae60" font-weight="bold">✓ Project Complete</text>
+</svg>
