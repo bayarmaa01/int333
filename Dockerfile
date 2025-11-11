@@ -1,21 +1,21 @@
 # ==========================
-# 1️⃣ Build Stage (using Maven)
+# 1️⃣ Build Stage (Maven)
 # ==========================
 FROM maven:3.9.8-eclipse-temurin-11 AS build
 
 # Set working directory
 WORKDIR /app
 
-# Copy only the pom.xml first to cache dependencies
+# Copy pom.xml first — this allows Docker to cache dependencies
 COPY pom.xml .
 
-# Download dependencies
-#RUN mvn dependency:go-offline -B
+# Download dependencies (safe + faster)
+RUN mvn dependency:resolve -B
 
-# Copy the full source code
+# Copy source code
 COPY src ./src
 
-# Package the WAR file (skip tests for CI)
+# Build WAR file, skip tests to save time
 RUN mvn clean package -DskipTests
 
 # ==========================
@@ -23,16 +23,16 @@ RUN mvn clean package -DskipTests
 # ==========================
 FROM tomcat:9-jdk11-openjdk-slim
 
-# Remove default Tomcat apps
+# Remove default Tomcat web apps
 RUN rm -rf /usr/local/tomcat/webapps/*
 
 # Copy WAR file from build stage
 COPY --from=build /app/target/learning-platform.war /usr/local/tomcat/webapps/learning-platform.war
 
-# Expose port 8080
+# Expose port
 EXPOSE 8080
 
-# Health check (used by Docker and Jenkins)
+# Health check for Jenkins and Docker
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
   CMD curl -f http://localhost:8080/learning-platform/ || exit 1
 
