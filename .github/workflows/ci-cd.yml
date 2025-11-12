@@ -97,7 +97,7 @@ jobs:
             echo "🚀 Starting deployment..."
             
             # Navigate to project directory
-            cd ~/int-project || cd /home/ubuntu/int-project || cd /home/$USER/int-project
+            cd ~/int333 || cd /home/ubuntu/int333 || cd /home/$USER/int333
             
             echo "📥 Pulling latest code..."
             git pull origin main
