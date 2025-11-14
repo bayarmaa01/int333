@@ -84,7 +84,7 @@ jobs:
             set -e
             echo "🚀 Deployment started"
 
-            cd ~/int-project || cd /home/ubuntu/int-project
+            cd ~/int333 || cd /home/ubuntu/int333
 
             echo "📥 Git pull"
             git pull origin main
