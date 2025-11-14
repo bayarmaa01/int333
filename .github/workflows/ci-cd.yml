@@ -100,7 +100,7 @@ jobs:
 
             echo "🔍 Checking app health"
             for i in {1..10}; do
-              if curl -f http://localhost:80/learning-platform/ >/dev/null 2>&1; then
+              if curl -f http://localhost:8080/learning-platform/ >/dev/null 2>&1; then
                 echo "✅ App is healthy"
                 exit 0
               fi
