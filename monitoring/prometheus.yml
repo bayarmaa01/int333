@@ -9,13 +9,13 @@ scrape_configs:
 
   - job_name: 'node-exporter'
     static_configs:
-      - targets: ['node-exporter:9100']
+      - targets: ['localhost:9100']
 
   - job_name: 'cadvisor'
     static_configs:
-      - targets: ['cadvisor:8080']
+      - targets: ['localhost:8080']
 
   - job_name: 'learning-platform'
     metrics_path: /
     static_configs:
-      - targets: ['learning-platform:8080']
+      - targets: ['localhost:8080']
