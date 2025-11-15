@@ -1,0 +1,13 @@
+- name: Deploy Application
+  hosts: server
+  become: yes
+
+  tasks:
+
+    - name: Pull latest Docker image
+      command: docker pull bayarmaa/learning-platform:latest
+
+    - name: Restart stack
+      command: docker compose down && docker compose up -d
+      args:
+        chdir: /home/ubuntu/int333

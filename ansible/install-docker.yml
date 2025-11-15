@@ -1,0 +1,62 @@
+- name: Install Docker & Monitoring Stack
+  hosts: server
+  become: yes
+
+  tasks:
+    - name: Install base tools
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
+        state: present
+        update_cache: yes
+
+    - name: Add Docker GPG key
+      shell: |
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker.gpg
+
+    - name: Add Docker repo
+      shell: |
+        echo \
+        "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker.gpg] \
+        https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" \
+        | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+    - name: Install Docker engine
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: present
+        update_cache: yes
+
+    - name: Install Docker Compose
+      command: curl -SL https://github.com/docker/compose/releases/download/v2.20.2/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+
+    - name: Set permission for docker-compose
+      file:
+        path: /usr/local/bin/docker-compose
+        mode: '0755'
+
+    - name: Copy docker-compose.yml
+      copy:
+        src: files/docker-compose.yml
+        dest: /home/ubuntu/int333/docker-compose.yml
+        owner: ubuntu
+        group: ubuntu
+
+    - name: Copy monitoring files
+      copy:
+        src: files/monitoring/
+        dest: /home/ubuntu/int333/monitoring/
+        owner: ubuntu
+        group: ubuntu
+
+    - name: Bring monitoring stack up
+      command: docker compose up -d
+      args:
+        chdir: /home/ubuntu/int333
